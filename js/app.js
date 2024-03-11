@@ -58,7 +58,7 @@ var colorSelect = [
     { 配色: '粉', 顏色: ['#F9C0D2', '#EA8AA5', '#E26170'] },
     { 配色: '深綠', 顏色: ['#CCE3DE', '#A4C3B2', '#6B9080'] },
     { 配色: '紅紫', 顏色: ['#E8C2CA', '#B392AC', '#735D78'] },
-    { 配色: '米', 顏色: ['#E2C6B0', '#E8CAA4', '#ECCFB1'] },
+    { 配色: '米', 顏色: ['#EEE0D3', '#E8CAA4', '#ECCFB1'] },
 ];
 var allcircle = [];
 function appstar() {
