@@ -14,18 +14,18 @@ var title = [
     { 編號: 10, picX: 34.75, picY: 18.5, text: '東', startDate: '', endDate: '' },
     { 編號: 11, picX: 18.5, picY: 34.75, text: '南', startDate: '', endDate: '' },
     { 編號: 12, picX: 2.25, picY: 18.5, text: '西', startDate: '', endDate: '' },
-    { 編號: 13, picX: 24.7, picY: 3.6, text: '大地復原', startDate: '12-22', endDate: '01-19', 屬性: '土', 家族: '海龜家族', 方位: '北' },
-    { 編號: 14, picX: 30, picY: 7.1, text: '休眠淨化', startDate: '01-20', endDate: '02-18', 家族: '蝴蝶家族', 方位: '北' },
-    { 編號: 15, picX: 33.5, picY: 12.3, text: '強風', startDate: '02-19', endDate: '03-20', 屬性: '水', 家族: '青蛙家族', 方位: '北' },
-    { 編號: 16, picX: 33.5, picY: 24.7, text: '樹萌芽', startDate: '03-21', endDate: '04-19', 屬性: '火', 家族: '雷鳥家族', 方位: '東' },
-    { 編號: 17, picX: 30, picY: 29.9, text: '蛙回歸', startDate: '04-20', endDate: '05-20', 屬性: '土', 家族: '海龜家族', 方位: '東' },
-    { 編號: 18, picX: 24.7, picY: 33.4, text: '玉米種植', startDate: '05-21', endDate: '06-20', 屬性: '風', 家族: '蝴蝶家族', 方位: '東' },
-    { 編號: 19, picX: 12.3, picY: 33.4, text: '烈日', startDate: '06-21', endDate: '07-22', 屬性: '水', 家族: '青蛙家族', 方位: '南' },
-    { 編號: 20, picX: 7, picY: 29.9, text: '採莓', startDate: '07-23', endDate: '08-22', 家族: '雷鳥家族', 方位: '南' },
-    { 編號: 21, picX: 3.5, picY: 24.7, text: '收穫', startDate: '08-23', endDate: '09-22', 屬性: '土', 家族: '海龜家族', 方位: '南' },
-    { 編號: 22, picX: 3.5, picY: 12.3, text: '群鴨飛遷', startDate: '09-23', endDate: '10-23', 屬性: '風', 家族: '蝴蝶家族', 方位: '西' },
-    { 編號: 23, picX: 7, picY: 7.1, text: '結凍', startDate: '10-24', endDate: '11-21', 屬性: '水', 家族: '青蛙家族', 方位: '西' },
-    { 編號: 24, picX: 12.3, picY: 3.6, text: '長雪', startDate: '11-22', endDate: '12-21', 屬性: '火', 家族: '雷鳥家族', 方位: '西' },
+    { 編號: 13, picX: 24.7, picY: 3.6, text: '大地復原', startDate: '2023-12-22', endDate: '2024-01-19', 屬性: '土', 家族: '海龜家族', 方位: '北' },
+    { 編號: 14, picX: 30, picY: 7.1, text: '休眠淨化', startDate: '2024-01-20', endDate: '2024-02-18', 家族: '蝴蝶家族', 方位: '北' },
+    { 編號: 15, picX: 33.5, picY: 12.3, text: '強風', startDate: '2024-02-19', endDate: '2024-03-20', 屬性: '水', 家族: '青蛙家族', 方位: '北' },
+    { 編號: 16, picX: 33.5, picY: 24.7, text: '樹萌芽', startDate: '2024-03-21', endDate: '2024-04-19', 屬性: '火', 家族: '雷鳥家族', 方位: '東' },
+    { 編號: 17, picX: 30, picY: 29.9, text: '蛙回歸', startDate: '2024-04-20', endDate: '2024-05-20', 屬性: '土', 家族: '海龜家族', 方位: '東' },
+    { 編號: 18, picX: 24.7, picY: 33.4, text: '玉米種植', startDate: '2024-05-21', endDate: '2024-06-20', 屬性: '風', 家族: '蝴蝶家族', 方位: '東' },
+    { 編號: 19, picX: 12.3, picY: 33.4, text: '烈日', startDate: '2024-06-21', endDate: '2024-07-22', 屬性: '水', 家族: '青蛙家族', 方位: '南' },
+    { 編號: 20, picX: 7, picY: 29.9, text: '採莓', startDate: '2024-07-23', endDate: '2024-08-22', 家族: '雷鳥家族', 方位: '南' },
+    { 編號: 21, picX: 3.5, picY: 24.7, text: '收穫', startDate: '2024-08-23', endDate: '2024-09-22', 屬性: '土', 家族: '海龜家族', 方位: '南' },
+    { 編號: 22, picX: 3.5, picY: 12.3, text: '群鴨飛遷', startDate: '2024-09-23', endDate: '2024-10-23', 屬性: '風', 家族: '蝴蝶家族', 方位: '西' },
+    { 編號: 23, picX: 7, picY: 7.1, text: '結凍', startDate: '2024-10-24', endDate: '2024-11-21', 屬性: '水', 家族: '青蛙家族', 方位: '西' },
+    { 編號: 24, picX: 12.3, picY: 3.6, text: '長雪', startDate: '2024-11-22', endDate: '2024-12-21', 屬性: '火', 家族: '雷鳥家族', 方位: '西' },
     { 編號: 25, picX: 18.5, picY: 6, text: '淨化', startDate: '', endDate: '' },
     { 編號: 26, picX: 18.5, picY: 9, text: '重建', startDate: '', endDate: '' },
     { 編號: 27, picX: 18.5, picY: 12, text: '純潔', startDate: '', endDate: '' },
@@ -208,9 +208,12 @@ function appstar() {
 function lightcircle(row) {
     const { time } = row;
     const result = [];
+    const timeSet = moment(time).format('2024-MM-DD');
     for (const t of title) {
         const { 編號, picX, picY, text, startDate, endDate, 屬性, 家族, 方位 } = t;
-        if (startDate && (time >= startDate && time <= endDate)) {
+        let startSet = moment(startDate).format('YYYY-MM-DD');
+        let endSet = moment(endDate).format('YYYY-MM-DD');
+        if (startDate && (timeSet >= startSet && timeSet <= endSet)) {
             const 本命月份 = numjudege(text);
             const 本命方位 = numjudege(方位);
             const 本命家族 = numjudege(家族);
@@ -327,6 +330,77 @@ function draw(result) {
         ctx.stroke();
         ctx.closePath();
     }
+    function drowTitleMark(row) {
+        const { 編號, picX, picY, type } = row;
+        // 繪製標籤
+        let width = 100;
+        let height = 50;
+        let backgroundColor = "lightblue";
+        let frameColor = "black";
+        const xyGet = widthAndHeight({ picX: picX, picY: picY });
+        const centerX = xyGet.centerX;
+        const centerY = xyGet.centerY;
+        let locationX = centerX * 1;
+        let locationY = centerY * 1;
+        if (type.includes("本命家族")) {
+            width = canvas.width * 0.05;
+            height = canvas.width * 0.015;
+        } else if (type.includes("本命方位")) {
+            if (編號 === 9) {
+                width = canvas.width * 0.05;
+                height = canvas.width * 0.015;
+                locationX = centerX + (centerX * 0.13);
+                locationY = centerY - (centerY * 0.5);
+            } else if (編號 === 11) {
+                width = canvas.width * 0.05;
+                height = canvas.width * 0.015;
+                locationX = centerX + (centerX * 0.13);
+                locationY = centerY - (centerY * 0.035);
+            } else if (編號 === 12) {
+                width = canvas.width * 0.05;
+                height = canvas.width * 0.015;
+                locationX = centerX - (centerX * 0.4);
+                locationY = centerY + (centerY * 0.1);
+            } else if (編號 === 10) {
+                width = canvas.width * 0.05;
+                height = canvas.width * 0.015;
+                locationX = centerX - (centerX * 0.026);
+                locationY = centerY + (centerY * 0.1);
+            }
+        } else if (type.includes("本命月份")) {
+            width = canvas.width * 0.05;
+            height = canvas.width * 0.015;
+            locationX = centerX * 1;
+            locationY = centerY * 1;
+        }
+        console.log(locationX)
+        console.log(locationY)
+        // // 先定位繪製的結果
+        // ctx.translate(locationX, locationY);
+        // 建立一個新的路徑
+        ctx.beginPath();
+        // 移動到左上角
+        ctx.moveTo(locationX, locationY);
+        // 繪製一條水平線
+        ctx.lineTo(locationX + width, locationY);
+        // 繪製右側弧線
+        ctx.arc(locationX + width, locationY + height, height, -Math.PI / 2, Math.PI / 2);
+        // 繪製一條水平線
+        ctx.lineTo(locationX + width, locationY + (height * 2));
+        // 繪製左側弧線
+        ctx.arc(locationX, locationY + height, height, Math.PI / 2, -Math.PI / 2);
+        // 關閉路徑
+        ctx.closePath();
+
+        // 填充路徑
+        ctx.fillStyle = backgroundColor; // 填充顏色
+        ctx.fill(); // 填充內部
+        // 設置線條寬度
+        ctx.lineWidth = 3; // 設置線條寬度為 4 像素
+        // 繪製路徑
+        ctx.strokeStyle = frameColor; // 線條顏色
+        ctx.stroke(); // 繪製線條
+    }
     function writeText(row) {
         const { 編號, picX, picY, text } = row;
         const xyGet = widthAndHeight({ picX: picX, picY: picY });
@@ -415,6 +489,9 @@ function draw(result) {
         }
         if (type.includes('本命家族') || type.includes('本命月份') || type.includes('本命方位')) {
             drawCircle({ 編號: 編號, picX: picX, picY: picY, color: colorGet[1] });
+            if (type.includes('本命方位')) {
+                drowTitleMark({ 編號: 編號, picX: picX, picY: picY, type: type });
+            }
         } else {
             drawCircle({ 編號: 編號, picX: picX, picY: picY, color: colorGet[0] });
         }
