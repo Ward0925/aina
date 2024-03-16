@@ -70,7 +70,6 @@ function appstar() {
                         <div class="center" id="myCanvasPie">
                             <canvas id="myCanvas"></canvas>
                         </div>
-                        
                     </div>
                 </div>
             </div>
@@ -91,6 +90,43 @@ function appstar() {
     `;
     $(`#bodylist`).html(html);
     timedates();
+    // const html = `
+    //     <div class="row row-cols-xl-2 ">
+    //         <div class="col-12 col-xl-6">
+    //             <div class="card radius-10">
+    //                 <div class="card-body">
+    //                     <div class="center" id="myCanvasPie">
+    //                         <canvas id="myCanvas"></canvas>
+    //                     </div>
+    //                 </div>
+    //             </div>
+    //         </div>
+    //         <div class="col-12 col-xl-6">
+    //             <div class="card radius-10">
+    //                 <div class="card-body" id="canvas-change">
+    //                     <div style="width: fit-content; display: flex; align-items: center; white-space: nowrap;">
+    //                         <span style="margin-right: 10px;">日期選擇</span>
+    //                         <div id="timeButton">
+    //                             <input class="input_text" type="text" value="請輸入日期" id="timeButtonClick">
+    //                         </div>
+    //                         <select id="chooseColor"></select>
+    //                     </div>
+    //                     <div id="chooseSelect" style="display: flex; flex-direction: column;"></div>
+    //                 </div>
+    //             </div>
+    //         </div>
+    //     </div>
+    // `;
+    // $(`#bodylist`).html(html);
+    // $(document).on(`click`, `#timeButtonClick`, function () {
+    //     $(this).remove();
+    //     const time = `
+    //         <input autocomplete="off" class="input_text" id="timedates" type="text">
+    //         <input hidden="" id="selected_date">
+    //     `;
+    //     $(`#timeButton`).html(time);
+    //     timedates();
+    // });
     let chooseHTML = `<div><h6 class="outlined-text">守護靈</h6></div>`;
     for (const s of sideSet) {
         const { 方位, id } = s;
@@ -208,9 +244,13 @@ function appstar() {
 function lightcircle(row) {
     const { time } = row;
     const result = [];
-    const timeSet = moment(time).format('2024-MM-DD');
     for (const t of title) {
         const { 編號, picX, picY, text, startDate, endDate, 屬性, 家族, 方位 } = t;
+        let timeSet = moment(time).format('2024-MM-DD');
+        const timeGet = moment(time).format('2023-MM-DD');
+        if (timeGet >= moment('2024-12-22').format('2023-MM-DD') && timeGet <= moment('2024-12-31').format('2023-MM-DD')) {
+            timeSet = moment(time).format('2023-MM-DD');
+        }
         let startSet = moment(startDate).format('YYYY-MM-DD');
         let endSet = moment(endDate).format('YYYY-MM-DD');
         if (startDate && (timeSet >= startSet && timeSet <= endSet)) {
@@ -330,51 +370,12 @@ function draw(result) {
         ctx.stroke();
         ctx.closePath();
     }
-    function drowTitleMark(row) {
+    async function drowTitleMark(row) {
         const { 編號, picX, picY, type } = row;
         // 繪製標籤
-        let width = 100;
-        let height = 50;
         let backgroundColor = "lightblue";
         let frameColor = "black";
-        const xyGet = widthAndHeight({ picX: picX, picY: picY });
-        const centerX = xyGet.centerX;
-        const centerY = xyGet.centerY;
-        let locationX = centerX * 1;
-        let locationY = centerY * 1;
-        if (type.includes("本命家族")) {
-            width = canvas.width * 0.05;
-            height = canvas.width * 0.015;
-        } else if (type.includes("本命方位")) {
-            if (編號 === 9) {
-                width = canvas.width * 0.05;
-                height = canvas.width * 0.015;
-                locationX = centerX + (centerX * 0.13);
-                locationY = centerY - (centerY * 0.5);
-            } else if (編號 === 11) {
-                width = canvas.width * 0.05;
-                height = canvas.width * 0.015;
-                locationX = centerX + (centerX * 0.13);
-                locationY = centerY - (centerY * 0.035);
-            } else if (編號 === 12) {
-                width = canvas.width * 0.05;
-                height = canvas.width * 0.015;
-                locationX = centerX - (centerX * 0.4);
-                locationY = centerY + (centerY * 0.1);
-            } else if (編號 === 10) {
-                width = canvas.width * 0.05;
-                height = canvas.width * 0.015;
-                locationX = centerX - (centerX * 0.026);
-                locationY = centerY + (centerY * 0.1);
-            }
-        } else if (type.includes("本命月份")) {
-            width = canvas.width * 0.05;
-            height = canvas.width * 0.015;
-            locationX = centerX * 1;
-            locationY = centerY * 1;
-        }
-        console.log(locationX)
-        console.log(locationY)
+        const { width, height, locationX, locationY } = await locationXYset({ 編號: 編號, picX: picX, picY: picY, type: type });
         // // 先定位繪製的結果
         // ctx.translate(locationX, locationY);
         // 建立一個新的路徑
@@ -431,6 +432,89 @@ function draw(result) {
         ctx.font = `bold ${fontSize}px Arial`; // 字體大小及類型
         // 繪製text
         ctx.fillText(text, centerX, secondLineY);
+    }
+    async function locationXYset(row) {
+        // 各個標籤定位
+        const { 編號, picX, picY, type } = row;
+        const xyGet = widthAndHeight({ picX: picX, picY: picY });
+        const centerX = xyGet.centerX;
+        const centerY = xyGet.centerY;
+        let width = 100;
+        let height = 50;
+        let locationX = centerX * 1;
+        let locationY = centerY * 1;
+        if (type.includes('本命家族') || type.includes('本命月份') || type.includes('本命方位')) {
+            width = canvas.width * 0.05;
+            height = canvas.width * 0.015;
+        }
+        if (type.includes("本命家族")) {
+            if (編號 === 5) {
+                locationX = centerX - (centerX * 0.18);
+                locationY = centerY + (centerY * 0.08);
+            } else if (編號 === 6) {
+                locationX = centerX - (centerX * 0.06);
+                locationY = centerY - (centerY * 0.17);
+            } else if (編號 === 7) {
+                locationX = centerX + (centerX * 0.05);
+                locationY = centerY - (centerY * 0.17);
+            } else if (編號 === 8) {
+                locationX = centerX + (centerX * 0.075);
+                locationY = centerY - (centerY * 0.12);
+            }
+        } else if (type.includes("本命方位")) {
+            if (編號 === 9) {
+                locationX = centerX + (centerX * 0.13);
+                locationY = centerY - (centerY * 0.5);
+            } else if (編號 === 11) {
+                locationX = centerX + (centerX * 0.13);
+                locationY = centerY - (centerY * 0.035);
+            } else if (編號 === 12) {
+                locationX = centerX - (centerX * 0.4);
+                locationY = centerY + (centerY * 0.1);
+            } else if (編號 === 10) {
+                locationX = centerX - (centerX * 0.026);
+                locationY = centerY + (centerY * 0.1);
+            }
+        } else if (type.includes("本命月份")) {
+            if (編號 === 13) {
+                locationX = centerX + (centerX * 0.08);
+                locationY = centerY - (centerY * 0.25);
+            } else if (編號 === 14) {
+                locationX = centerX + (centerX * 0.07);
+                locationY = centerY - (centerY * 0.12);
+            } else if (編號 === 15) {
+                locationX = centerX - (centerX * 0.12);
+                locationY = centerY - (centerY * 0.08);
+            } else if (編號 === 16) {
+                locationX = centerX - (centerX * 0.12);
+                locationY = centerY - (centerY * 0.035);
+            } else if (編號 === 17) {
+                locationX = centerX + (centerX * 0.07);
+                locationY = centerY - (centerY * 0.035);
+            } else if (編號 === 18) {
+                locationX = centerX + (centerX * 0.08);
+                locationY = centerY - (centerY * 0.035);
+            } else if (編號 === 19) {
+                locationX = centerX + (centerX * 0.16);
+                locationY = centerY - (centerY * 0.035);
+            } else if (編號 === 20) {
+                locationX = centerX + (centerX * 0.28);
+                locationY = centerY - (centerY * 0.035);
+            } else if (編號 === 21) {
+                locationX = centerX + (centerX * 0.6);
+                locationY = centerY - (centerY * 0.035);
+            } else if (編號 === 22) {
+                locationX = centerX + (centerX * 0.6);
+                locationY = centerY - (centerY * 0.07);
+            } else if (編號 === 23) {
+                locationX = centerX + (centerX * 0.28);
+                locationY = centerY - (centerY * 0.12);
+            } else if (編號 === 24) {
+                locationX = centerX + (centerX * 0.16);
+                locationY = centerY - (centerY * 0.25);
+            }
+        }
+        return { width: width, height: height, locationX: locationX, locationY: locationY };
     }
     const chooseCount = [];
     if (result.length > 0) {
@@ -490,6 +574,10 @@ function draw(result) {
         if (type.includes('本命家族') || type.includes('本命月份') || type.includes('本命方位')) {
             drawCircle({ 編號: 編號, picX: picX, picY: picY, color: colorGet[1] });
             if (type.includes('本命方位')) {
+                drowTitleMark({ 編號: 編號, picX: picX, picY: picY, type: type });
+            } else if (type.includes('本命月份')) {
+                drowTitleMark({ 編號: 編號, picX: picX, picY: picY, type: type });
+            } else if (type.includes('本命家族')) {
                 drowTitleMark({ 編號: 編號, picX: picX, picY: picY, type: type });
             }
         } else {
