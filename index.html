@@ -31,22 +31,9 @@
 	<script src="assets/js/moment.min.js"></script>
 	<script language="JavaScript" type="text/javascript" src="assets/js/daterangepicker.min.js"></script>
 	<!-- 取得起始、結束日 -->
-	<script id='app'></script>
+	<script src="js/app.js"></script>
 </head>
-<script>
-	$(function () {
-		const Time = new Date().getTime();
-		const scripts = [
-			{name: 'app.js', path: 'js/'},
-		];
-		// 路徑名稱製作
-		scripts.forEach(script => {
-			const elementId = '#' + script.name.replace('.js', '');
-			const scriptUrl = script.path ? script.path + script.name + '?t=' + Time : 'js/' + script.name + '?t=' + Time;
-			$(elementId).attr('src', scriptUrl);
-		});
-	});
-</script>
+
 <body>
 	<div id="bodylist" style="padding: 1.5rem 1.5rem 0.7rem 1.5rem;"></div>
 </body>
@@ -73,7 +60,7 @@
 				"endDate": moment(), // 设定默认的结束日期为当前日期
 				"opens": "right"
 			}, function (selectedDate, endDate, label) {
-				$('#selected_date').val(selectedDate.format('MM-DD')); // 将选择的日期格式化为字符串并存储在指定的输入框中
+				$('#selected_date').val(selectedDate.format('2024-MM-DD')); // 将选择的日期格式化为字符串并存储在指定的输入框中
 			});
 		});
 	}
