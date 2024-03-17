@@ -371,11 +371,11 @@ function draw(result) {
         ctx.closePath();
     }
     async function drowTitleMark(row) {
-        const { 編號, picX, picY, type } = row;
+        const { 編號, picX, picY, type, work } = row;
         // 繪製標籤
         let backgroundColor = "lightblue";
         let frameColor = "black";
-        const { width, height, locationX, locationY } = await locationXYset({ 編號: 編號, picX: picX, picY: picY, type: type });
+        const { width, height, locationX, locationY } = await locationXYset({ 編號, picX, picY, type, work });
         // // 先定位繪製的結果
         // ctx.translate(locationX, locationY);
         // 建立一個新的路徑
@@ -402,40 +402,52 @@ function draw(result) {
         ctx.strokeStyle = frameColor; // 線條顏色
         ctx.stroke(); // 繪製線條
     }
-    function writeText(row) {
-        const { 編號, picX, picY, text } = row;
-        const xyGet = widthAndHeight({ picX: picX, picY: picY });
-        const centerX = xyGet.centerX;
-        const centerY = xyGet.centerY;
+    async function writeText(row) {
+        const { 編號, picX, picY, type, text, work } = row;
+        const { locationX, locationY } = await locationXYset({ 編號, picX, picY, type, text, work });
+        let canvasX = locationX;
+        let canvasY = locationY;
         // 判斷字體大小
         let fontSize = 0;
         const canvasWidth = canvas.width;
-        if (編號 === 1 || (編號 >= 9 && 編號 <= 12)) {
-            fontSize = Math.floor(canvasWidth * 0.02);
-        } else if ((編號 >= 2 && 編號 <= 8) || 編號 === 13 || 編號 === 14 || 編號 === 18 || 編號 === 22) {
-            fontSize = Math.floor(canvasWidth * 0.014);
-        }
-        else {
-            fontSize = Math.floor(canvasWidth * 0.016);
+        if (work === "基礎") {
+            if (編號 === 1 || (編號 >= 9 && 編號 <= 12)) {
+                fontSize = Math.floor(canvasWidth * 0.02);
+            } else if ((編號 >= 2 && 編號 <= 8) || 編號 === 13 || 編號 === 14 || 編號 === 18 || 編號 === 22) {
+                fontSize = Math.floor(canvasWidth * 0.014);
+            }
+            else {
+                fontSize = Math.floor(canvasWidth * 0.016);
+            }
+        } else if (work === "本命") {
+            fontSize = Math.floor(canvasWidth * 0.018);
+            canvasX = locationX + (locationX * 0.045);
+            canvasY = locationY + (locationY * 0.7);
         }
         // 字體樣式
         ctx.font = `bold ${fontSize}px Arial`; // 字體大小及類型
         ctx.fillStyle = '#3D3D3D'; // 文字顏色
         ctx.textAlign = 'center'; // 文字居中水平對齊
-        // 計算編號位置
-        const firstLineY = centerY - fontSize * 0.7;
-        // 繪製編號
-        ctx.fillText(編號, centerX, firstLineY);
-        // 計算text位置
-        const secondLineY = centerY + fontSize * 0.7;
-        // 字體樣式
-        ctx.font = `bold ${fontSize}px Arial`; // 字體大小及類型
-        // 繪製text
-        ctx.fillText(text, centerX, secondLineY);
+        if (work === "基礎") {
+            // 計算編號位置
+            const firstLineY = canvasY - fontSize * 0.7;
+            // 繪製編號
+            ctx.fillText(編號, canvasX, firstLineY);
+            // 計算text位置
+            const secondLineY = canvasY + fontSize * 0.7;
+            // 字體樣式
+            ctx.font = `bold ${fontSize}px Arial`; // 字體大小及類型
+            // 繪製text
+            ctx.fillText(text, canvasX, secondLineY);
+        } else if (work === "本命") {
+            // 繪製text
+            ctx.fillText(text, canvasX, canvasY);
+        }
+
     }
     async function locationXYset(row) {
         // 各個標籤定位
-        const { 編號, picX, picY, type } = row;
+        const { 編號, picX, picY, type, work } = row;
         const xyGet = widthAndHeight({ picX: picX, picY: picY });
         const centerX = xyGet.centerX;
         const centerY = xyGet.centerY;
@@ -443,75 +455,79 @@ function draw(result) {
         let height = 50;
         let locationX = centerX * 1;
         let locationY = centerY * 1;
-        if (type.includes('本命家族') || type.includes('本命月份') || type.includes('本命方位')) {
-            width = canvas.width * 0.05;
-            height = canvas.width * 0.015;
-        }
-        if (type.includes("本命家族")) {
-            if (編號 === 5) {
-                locationX = centerX - (centerX * 0.18);
-                locationY = centerY + (centerY * 0.08);
-            } else if (編號 === 6) {
-                locationX = centerX - (centerX * 0.06);
-                locationY = centerY - (centerY * 0.17);
-            } else if (編號 === 7) {
-                locationX = centerX + (centerX * 0.05);
-                locationY = centerY - (centerY * 0.17);
-            } else if (編號 === 8) {
-                locationX = centerX + (centerX * 0.075);
-                locationY = centerY - (centerY * 0.12);
+        if (work === "基礎") {
+            return { locationX: locationX, locationY: locationY };
+        } else if (work === "本命") {
+            if (type.includes('本命家族') || type.includes('本命月份') || type.includes('本命方位')) {
+                width = canvas.width * 0.05;
+                height = canvas.width * 0.015;
             }
-        } else if (type.includes("本命方位")) {
-            if (編號 === 9) {
-                locationX = centerX + (centerX * 0.13);
-                locationY = centerY - (centerY * 0.5);
-            } else if (編號 === 11) {
-                locationX = centerX + (centerX * 0.13);
-                locationY = centerY - (centerY * 0.035);
-            } else if (編號 === 12) {
-                locationX = centerX - (centerX * 0.4);
-                locationY = centerY + (centerY * 0.1);
-            } else if (編號 === 10) {
-                locationX = centerX - (centerX * 0.026);
-                locationY = centerY + (centerY * 0.1);
-            }
-        } else if (type.includes("本命月份")) {
-            if (編號 === 13) {
-                locationX = centerX + (centerX * 0.08);
-                locationY = centerY - (centerY * 0.25);
-            } else if (編號 === 14) {
-                locationX = centerX + (centerX * 0.07);
-                locationY = centerY - (centerY * 0.12);
-            } else if (編號 === 15) {
-                locationX = centerX - (centerX * 0.12);
-                locationY = centerY - (centerY * 0.08);
-            } else if (編號 === 16) {
-                locationX = centerX - (centerX * 0.12);
-                locationY = centerY - (centerY * 0.035);
-            } else if (編號 === 17) {
-                locationX = centerX + (centerX * 0.07);
-                locationY = centerY - (centerY * 0.035);
-            } else if (編號 === 18) {
-                locationX = centerX + (centerX * 0.08);
-                locationY = centerY - (centerY * 0.035);
-            } else if (編號 === 19) {
-                locationX = centerX + (centerX * 0.16);
-                locationY = centerY - (centerY * 0.035);
-            } else if (編號 === 20) {
-                locationX = centerX + (centerX * 0.28);
-                locationY = centerY - (centerY * 0.035);
-            } else if (編號 === 21) {
-                locationX = centerX + (centerX * 0.6);
-                locationY = centerY - (centerY * 0.035);
-            } else if (編號 === 22) {
-                locationX = centerX + (centerX * 0.6);
-                locationY = centerY - (centerY * 0.07);
-            } else if (編號 === 23) {
-                locationX = centerX + (centerX * 0.28);
-                locationY = centerY - (centerY * 0.12);
-            } else if (編號 === 24) {
-                locationX = centerX + (centerX * 0.16);
-                locationY = centerY - (centerY * 0.25);
+            if (type.includes("本命家族")) {
+                if (編號 === 5) {
+                    locationX = centerX - (centerX * 0.18);
+                    locationY = centerY + (centerY * 0.08);
+                } else if (編號 === 6) {
+                    locationX = centerX - (centerX * 0.06);
+                    locationY = centerY - (centerY * 0.17);
+                } else if (編號 === 7) {
+                    locationX = centerX + (centerX * 0.05);
+                    locationY = centerY - (centerY * 0.17);
+                } else if (編號 === 8) {
+                    locationX = centerX + (centerX * 0.075);
+                    locationY = centerY - (centerY * 0.12);
+                }
+            } else if (type.includes("本命方位")) {
+                if (編號 === 9) {
+                    locationX = centerX + (centerX * 0.13);
+                    locationY = centerY - (centerY * 0.5);
+                } else if (編號 === 11) {
+                    locationX = centerX + (centerX * 0.13);
+                    locationY = centerY - (centerY * 0.035);
+                } else if (編號 === 12) {
+                    locationX = centerX - (centerX * 0.4);
+                    locationY = centerY + (centerY * 0.1);
+                } else if (編號 === 10) {
+                    locationX = centerX - (centerX * 0.026);
+                    locationY = centerY + (centerY * 0.1);
+                }
+            } else if (type.includes("本命月份")) {
+                if (編號 === 13) {
+                    locationX = centerX + (centerX * 0.08);
+                    locationY = centerY - (centerY * 0.25);
+                } else if (編號 === 14) {
+                    locationX = centerX + (centerX * 0.07);
+                    locationY = centerY - (centerY * 0.12);
+                } else if (編號 === 15) {
+                    locationX = centerX - (centerX * 0.12);
+                    locationY = centerY - (centerY * 0.08);
+                } else if (編號 === 16) {
+                    locationX = centerX - (centerX * 0.12);
+                    locationY = centerY - (centerY * 0.035);
+                } else if (編號 === 17) {
+                    locationX = centerX + (centerX * 0.07);
+                    locationY = centerY - (centerY * 0.035);
+                } else if (編號 === 18) {
+                    locationX = centerX + (centerX * 0.08);
+                    locationY = centerY - (centerY * 0.035);
+                } else if (編號 === 19) {
+                    locationX = centerX + (centerX * 0.16);
+                    locationY = centerY - (centerY * 0.035);
+                } else if (編號 === 20) {
+                    locationX = centerX + (centerX * 0.28);
+                    locationY = centerY - (centerY * 0.035);
+                } else if (編號 === 21) {
+                    locationX = centerX + (centerX * 0.6);
+                    locationY = centerY - (centerY * 0.035);
+                } else if (編號 === 22) {
+                    locationX = centerX + (centerX * 0.6);
+                    locationY = centerY - (centerY * 0.07);
+                } else if (編號 === 23) {
+                    locationX = centerX + (centerX * 0.28);
+                    locationY = centerY - (centerY * 0.12);
+                } else if (編號 === 24) {
+                    locationX = centerX + (centerX * 0.16);
+                    locationY = centerY - (centerY * 0.25);
+                }
             }
         }
         return { width: width, height: height, locationX: locationX, locationY: locationY };
@@ -573,32 +589,34 @@ function draw(result) {
         }
         if (type.includes('本命家族') || type.includes('本命月份') || type.includes('本命方位')) {
             drawCircle({ 編號: 編號, picX: picX, picY: picY, color: colorGet[1] });
+            const work = "本命";
             if (type.includes('本命方位')) {
-                drowTitleMark({ 編號: 編號, picX: picX, picY: picY, type: type });
+                drowTitleMark({ 編號: 編號, picX: picX, picY: picY, type: type, work: work });
+                writeText({ 編號: 編號, picX: picX, picY: picY, text: type, type: type, work: work });
             } else if (type.includes('本命月份')) {
-                drowTitleMark({ 編號: 編號, picX: picX, picY: picY, type: type });
+                drowTitleMark({ 編號: 編號, picX: picX, picY: picY, type: type, work: work });
             } else if (type.includes('本命家族')) {
-                drowTitleMark({ 編號: 編號, picX: picX, picY: picY, type: type });
+                drowTitleMark({ 編號: 編號, picX: picX, picY: picY, type: type, work: work });
             }
         } else {
             drawCircle({ 編號: 編號, picX: picX, picY: picY, color: colorGet[0] });
         }
     }
     for (const t of title) {
-        const { picX, picY, text } = t;
+        const { picX, picY, type, text } = t;
         const num = parseFloat(t.編號);
         if (chooseNumbers.length === 0) {
             // 繪製空心圓
             drawHollowCircle({ 編號: num, picX, picY });
             // 寫入文字
-            writeText({ 編號: num, picX, picY, text });
+            writeText({ 編號: num, picX, picY, text, work: "基礎" });
         } else {
             if (!chooseNumbers.includes(num)) {
                 // 繪製空心圓
                 drawHollowCircle({ 編號: num, picX, picY });
             }
             // 寫入文字
-            writeText({ 編號: num, picX, picY, text });
+            writeText({ 編號: num, picX, picY, text, work: "基礎" });
         }
     }
 }
