@@ -329,14 +329,14 @@ function draw(result) {
         } else {
             radius = canvas.width * (0.0325 + size)
         }
-        return radius;
+        return Math.floor(radius);
     }
     function drawCircle(row) {
         // 繪製實心圓
         const { 編號, picX, picY, color } = row;
         const xyGet = widthAndHeight({ picX: picX, picY: picY });
-        const centerX = xyGet.centerX;
-        const centerY = xyGet.centerY;
+        const centerX = Math.floor(xyGet.centerX);
+        const centerY = Math.floor(xyGet.centerY);
         const radius = radiusSet({ 編號: 編號, size: 0 });
         let colorSet = 'black';
         if (color) {
@@ -353,28 +353,31 @@ function draw(result) {
         const { 編號, picX, picY, color, size } = row;
         const sizeSet = !size ? 0 : size;
         const xyGet = widthAndHeight({ picX: picX, picY: picY });
-        const centerX = xyGet.centerX;
-        const centerY = xyGet.centerY;
+        const centerX = Math.floor(xyGet.centerX);
+        const centerY = Math.floor(xyGet.centerY);
         const radius = radiusSet({ 編號: 編號, size: sizeSet });
-        let colorSet = '#3D3D3D';
+        let colorSet = '#000';
         if (color) {
             colorSet = color;
         }
         ctx.beginPath();
-        ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
+        ctx.arc(centerX, centerY, radius, 0, (Math.PI * 2));
         ctx.strokeStyle = colorSet;
-        ctx.lineWidth = 3;
+        ctx.lineWidth = 4;
         // 抗鋸齒效果
-        ctx.shadowBlur = 1; // 陰影模糊半徑
-        ctx.shadowColor = '#3D3D3D'; // 陰影顏色
+        ctx.shadowBlur = 0.1; // 陰影模糊半徑
+        ctx.shadowColor = color; // 陰影顏色
         ctx.stroke();
         ctx.closePath();
     }
     async function drowTitleMark(row) {
         const { 編號, picX, picY, type, work } = row;
+        const colorGet = colorSetJudge();
         // 繪製標籤
-        let backgroundColor = "lightblue";
-        let frameColor = "black";
+        let backgroundColor = colorGet[1];
+        let frameColor = colorGet[1];
+        // let backgroundColor = "lightblue";
+        // let frameColor = "black";
         const { width, height, locationX, locationY } = await locationXYset({ 編號, picX, picY, type, work });
         // // 先定位繪製的結果
         // ctx.translate(locationX, locationY);
@@ -396,11 +399,11 @@ function draw(result) {
         // 填充路徑
         ctx.fillStyle = backgroundColor; // 填充顏色
         ctx.fill(); // 填充內部
-        // 設置線條寬度
-        ctx.lineWidth = 3; // 設置線條寬度為 4 像素
-        // 繪製路徑
-        ctx.strokeStyle = frameColor; // 線條顏色
-        ctx.stroke(); // 繪製線條
+        // // 設置線條寬度
+        // ctx.lineWidth = 0; // 設置線條寬度為 4 像素
+        // // 繪製路徑
+        // ctx.strokeStyle = frameColor; // 線條顏色
+        // ctx.stroke(); // 繪製線條
     }
     async function writeText(row) {
         const { 編號, picX, picY, type, text, work } = row;
@@ -426,7 +429,7 @@ function draw(result) {
         }
         // 字體樣式
         ctx.font = `bold ${fontSize}px Arial`; // 字體大小及類型
-        ctx.fillStyle = '#3D3D3D'; // 文字顏色
+        ctx.fillStyle = '#000'; // 文字顏色
         ctx.textAlign = 'center'; // 文字居中水平對齊
         if (work === "基礎") {
             // 計算編號位置
@@ -451,16 +454,17 @@ function draw(result) {
         const xyGet = widthAndHeight({ picX: picX, picY: picY });
         const centerX = xyGet.centerX;
         const centerY = xyGet.centerY;
+        const canvasWidth = canvas.width;
         let width = 100;
         let height = 50;
-        let locationX = centerX * 1;
-        let locationY = centerY * 1;
+        let locationX = centerX;
+        let locationY = centerY;
         if (work === "基礎") {
             return { locationX: locationX, locationY: locationY };
         } else if (work === "本命") {
             if (type.includes('本命家族') || type.includes('本命月份') || type.includes('本命方位')) {
-                width = canvas.width * 0.05;
-                height = canvas.width * 0.015;
+                width = canvasWidth * 0.05;
+                height = canvasWidth * 0.015;
             }
             if (type.includes("本命家族")) {
                 if (編號 === 5) {
@@ -477,60 +481,24 @@ function draw(result) {
                     locationY = centerY - (centerY * 0.12);
                 }
             } else if (type.includes("本命方位")) {
-                if (編號 === 9) {
-                    locationX = centerX + (centerX * 0.13);
-                    locationY = centerY - (centerY * 0.5);
-                } else if (編號 === 11) {
-                    locationX = centerX + (centerX * 0.13);
-                    locationY = centerY - (centerY * 0.035);
-                } else if (編號 === 12) {
-                    locationX = centerX - (centerX * 0.4);
-                    locationY = centerY + (centerY * 0.1);
-                } else if (編號 === 10) {
-                    locationX = centerX - (centerX * 0.026);
-                    locationY = centerY + (centerY * 0.1);
+                if (編號 === 9 || 編號 === 11) {
+                    locationX = centerX + (canvasWidth * 0.063);
+                    locationY = centerY - (canvasWidth * 0.04);
+                } else if (編號 === 10 || 編號 === 12) {
+                    locationX = centerX - (canvasWidth * 0.024);
+                    locationY = centerY + (canvasWidth * 0.05);
                 }
             } else if (type.includes("本命月份")) {
-                if (編號 === 13) {
-                    locationX = centerX + (centerX * 0.08);
-                    locationY = centerY - (centerY * 0.25);
-                } else if (編號 === 14) {
-                    locationX = centerX + (centerX * 0.07);
-                    locationY = centerY - (centerY * 0.12);
-                } else if (編號 === 15) {
-                    locationX = centerX - (centerX * 0.12);
-                    locationY = centerY - (centerY * 0.08);
-                } else if (編號 === 16) {
-                    locationX = centerX - (centerX * 0.12);
-                    locationY = centerY - (centerY * 0.035);
-                } else if (編號 === 17) {
-                    locationX = centerX + (centerX * 0.07);
-                    locationY = centerY - (centerY * 0.035);
-                } else if (編號 === 18) {
-                    locationX = centerX + (centerX * 0.08);
-                    locationY = centerY - (centerY * 0.035);
-                } else if (編號 === 19) {
-                    locationX = centerX + (centerX * 0.16);
-                    locationY = centerY - (centerY * 0.035);
-                } else if (編號 === 20) {
-                    locationX = centerX + (centerX * 0.28);
-                    locationY = centerY - (centerY * 0.035);
-                } else if (編號 === 21) {
-                    locationX = centerX + (centerX * 0.6);
-                    locationY = centerY - (centerY * 0.035);
-                } else if (編號 === 22) {
-                    locationX = centerX + (centerX * 0.6);
-                    locationY = centerY - (centerY * 0.07);
-                } else if (編號 === 23) {
-                    locationX = centerX + (centerX * 0.28);
-                    locationY = centerY - (centerY * 0.12);
-                } else if (編號 === 24) {
-                    locationX = centerX + (centerX * 0.16);
-                    locationY = centerY - (centerY * 0.25);
+                if (編號 === 13 || 編號 === 14 || 編號 >= 17) {
+                    locationX = centerX + (canvasWidth * 0.053);
+                    locationY = centerY - (canvasWidth * 0.03);
+                } else if (編號 === 15 || 編號 === 16) {
+                    locationX = centerX - (canvasWidth * 0.105);
+                    locationY = centerY - (canvasWidth * 0.03);
                 }
             }
         }
-        return { width: width, height: height, locationX: locationX, locationY: locationY };
+        return { width: Math.floor(width), height: Math.floor(height), locationX: Math.floor(locationX), locationY: Math.floor(locationY) };
     }
     const chooseCount = [];
     if (result.length > 0) {
@@ -570,13 +538,22 @@ function draw(result) {
         }
         chooseNumbers = chooseCount.map(item => item.編號);
     }
-    function drawHollowCircleNum(row) {
-        const { 次數, type, 編號, picX, picY } = row;
+    function colorSetJudge() {
         const colorChoose = $(`#chooseColor`).val();
         // 查找符合 colorChoose 的項目
         const selectedColor = colorSelect.find(item => item['配色'] === colorChoose);
         // 獲取對應的顏色數組
         const colorGet = selectedColor ? selectedColor['顏色'] : [];
+        return colorGet;
+    }
+    async function drawHollowCircleNum(row) {
+        const { 次數, type, 編號, picX, picY } = row;
+        // const colorChoose = $(`#chooseColor`).val();
+        // // 查找符合 colorChoose 的項目
+        // const selectedColor = colorSelect.find(item => item['配色'] === colorChoose);
+        // // 獲取對應的顏色數組
+        // const colorGet = selectedColor ? selectedColor['顏色'] : [];
+        const colorGet = colorSetJudge();
         // const colorGet = '配色紅';
         for (let i = 0; i < 次數; i++) {
             const size = 0.005 * i;
