@@ -420,9 +420,9 @@ function draw(result) {
                 fontSize = Math.floor(canvasWidth * 0.016);
             }
         } else if (work === "本命") {
-            fontSize = Math.floor(canvasWidth * 0.018);
-            canvasX = locationX + (locationX * 0.045);
-            canvasY = locationY + (locationY * 0.7);
+            fontSize = Math.floor(canvasWidth * 0.016);
+            canvasX = locationX + (canvasWidth * 0.025);
+            canvasY = locationY + (canvasWidth * 0.02);
         }
         // 字體樣式
         ctx.font = `bold ${fontSize}px Arial`; // 字體大小及類型
@@ -590,14 +590,9 @@ function draw(result) {
         if (type.includes('本命家族') || type.includes('本命月份') || type.includes('本命方位')) {
             drawCircle({ 編號: 編號, picX: picX, picY: picY, color: colorGet[1] });
             const work = "本命";
-            if (type.includes('本命方位')) {
-                drowTitleMark({ 編號: 編號, picX: picX, picY: picY, type: type, work: work });
-                writeText({ 編號: 編號, picX: picX, picY: picY, text: type, type: type, work: work });
-            } else if (type.includes('本命月份')) {
-                drowTitleMark({ 編號: 編號, picX: picX, picY: picY, type: type, work: work });
-            } else if (type.includes('本命家族')) {
-                drowTitleMark({ 編號: 編號, picX: picX, picY: picY, type: type, work: work });
-            }
+            const typeSet = type.includes('本命家族') ? '本命家族' : type.includes('本命月份') ? '本命月份' : type.includes('本命方位') ? '本命方位' : '';
+            drowTitleMark({ 編號: 編號, picX: picX, picY: picY, type: type, work: work });
+            writeText({ 編號: 編號, picX: picX, picY: picY, text: typeSet, type: type, work: work });
         } else {
             drawCircle({ 編號: 編號, picX: picX, picY: picY, color: colorGet[0] });
         }
