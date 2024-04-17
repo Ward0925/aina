@@ -247,8 +247,8 @@ function draw(data, result) {
     ctx.textSmoothingQuality = 'high';
     // 設置像素比例為2，增加清晰度
     ctx.pixelRatio = 10;
-    ctx.fillStyle = 'white';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    // ctx.fillStyle = 'white';
+    // ctx.fillRect(0, 0, canvas.width, canvas.height);
     // 獲取配色
     const colorChoose = $(`#chooseColor`).val()
     const colorScheme = colorSelect.find(scheme => scheme.配色 === colorChoose);
