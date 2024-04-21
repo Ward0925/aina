@@ -74,16 +74,29 @@ function appstar() {// <div class="center" id="myCanvasPie" style="background-im
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-xl-6">
-                <div class="card radius-10">
-                    <div class="card-body" id="canvas-change">
-                        <div style="width: fit-content; display: flex; align-items: center; white-space: nowrap;">
-                            <span style="margin-right: 10px;">日期選擇</span>
+            <div class="col-12 col-xl-6" id="canvas-change">
+                <div class="col-12 col-xl-12">
+                    <div class="card radius-10">
+                        <div class="card-body">
                             <input autocomplete="off" class="input_text" id="timedates" type="text">
                             <input hidden="" id="selected_date">
                             <select id="chooseColor"></select>
+                            <button type="button" class="btn btn-warning px-5 radius-30 pictureDownload">另存圖片</button>
                         </div>
-                        <div id="chooseSelect" style="display: flex; flex-direction: column;"></div>
+                    </div>
+                </div>
+                <div class="col-12 col-xl-12">
+                    <div class="card radius-10">
+                        <div class="card-body">
+                            <div class="card-header bg-transparent">
+                                <div class="d-flex align-items-center">
+                                    <div>
+                                        <h6 class="mb-0" style="font-weight: bold; font-size: 1.2rem;">守護靈</h6>
+                                    </div>
+                                </div>
+						    </div>
+                            <div id="chooseSelect" style="display: flex; flex-direction: column;"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -100,7 +113,8 @@ function appstar() {// <div class="center" id="myCanvasPie" style="background-im
     }
     $(`#chooseColor`).html(buttonColor);
     // 方位設定
-    let chooseHTML = `<div><h6 class="outlined-text">守護靈</h6></div>`;
+    let chooseHTML = ``;
+    let countSelect = 0;
     for (const s of sideSet) {
         const { 方位, id } = s;
         let num = `
@@ -112,13 +126,15 @@ function appstar() {// <div class="center" id="myCanvasPie" style="background-im
         }
         num += `</select>`;
         chooseHTML += `
-            <div style="display: flex; align-items: center;">
+            ${countSelect === 0 ? '' : '<hr>'}
+            <div style="display: flex; align-items: center; flex-wrap: wrap;">
                 <span style="text-align: right; margin-right: 10px;">${方位}</span>
                 <input required="" class="input_text input_text_${id}" type="text" style="width: 190px;">
                 ${num}
                 <div id="select-${id}"></div>
             </div>
         `;
+        countSelect += 1;
     }
     $(`#chooseSelect`).html(chooseHTML);
     // 選單數量
@@ -177,6 +193,22 @@ function appstar() {// <div class="center" id="myCanvasPie" style="background-im
             }
         });
         myCanvasSet(result);
+    });
+    $(document).on(`click`, `.pictureDownload`, function () {
+        // 獲取 canvas 元素的引用
+        const canvas = document.getElementById('myCanvas');
+        // 將 canvas 轉換為 Data URL
+        const dataURL = canvas.toDataURL();
+        // 創建一個新的圖像元素
+        const img = new Image();
+        // 賦值 Data URL 給圖像元素的 src 屬性
+        img.src = dataURL;
+        // 創建一個 a 元素，用於下載圖片
+        const a = document.createElement('a');
+        a.href = dataURL;
+        a.download = 'canvas_image.png';
+        a.click();
+
     });
 }
 // 根據日期選擇項目
@@ -327,23 +359,23 @@ function draw(data, result) {
             if ((編號 >= 5 && 編號 <= 12)) {
                 locationX_set = locationXY[編號].X;
                 locationY_set = locationXY[編號].Y;
-            } else 
-            if (編號 >= 13 && 編號 <= 15) {
-                locationX_set = locationXY['右上'].X;
-                locationY_set = locationXY['右上'].Y;
-            } else if (編號 >= 16 && 編號 <= 18) {
-                locationX_set = locationXY['右下'].X;
-                locationY_set = locationXY['右下'].Y;
-            } else if (編號 >= 19 && 編號 <= 21) {
-                locationX_set = locationXY['左下'].X;
-                locationY_set = locationXY['左下'].Y;
-            } else if (編號 >= 22 && 編號 <= 24) {
-                locationX_set = locationXY['左上'].X;
-                locationY_set = locationXY['左上'].Y;
-            } else {
-                locationX_set = locationXY['外'].X;
-                locationY_set = locationXY['外'].Y;
-            }
+            } else
+                if (編號 >= 13 && 編號 <= 15) {
+                    locationX_set = locationXY['右上'].X;
+                    locationY_set = locationXY['右上'].Y;
+                } else if (編號 >= 16 && 編號 <= 18) {
+                    locationX_set = locationXY['右下'].X;
+                    locationY_set = locationXY['右下'].Y;
+                } else if (編號 >= 19 && 編號 <= 21) {
+                    locationX_set = locationXY['左下'].X;
+                    locationY_set = locationXY['左下'].Y;
+                } else if (編號 >= 22 && 編號 <= 24) {
+                    locationX_set = locationXY['左上'].X;
+                    locationY_set = locationXY['左上'].Y;
+                } else {
+                    locationX_set = locationXY['外'].X;
+                    locationY_set = locationXY['外'].Y;
+                }
         } else {
             if (type === '守護靈') {
                 const nameGet = sideSet.find(scheme => scheme.id === side);
