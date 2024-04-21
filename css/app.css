@@ -47,4 +47,6 @@ img {
     border-radius: 40px;
     /* font-weight: bold; */
     color: white;
+    width: 80px;
+    text-align: center;
 }
