@@ -287,7 +287,7 @@ function myCanvasSet(result) {
 
         // 加載背景圖片
         const img = new Image();
-        img.src = 'photo/pic-1.png'; // 更換為你的圖片路徑
+        img.src = 'photo/pic-0.png'; // 更換為你的圖片路徑
         img.onload = function () {
             // 在圖片加載完成後，在 Canvas 上繪製圖片
             ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
