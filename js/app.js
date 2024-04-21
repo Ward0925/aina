@@ -3,41 +3,41 @@ $(function () {
 });
 var title = [
     { 編號: '01', picX: 0.5, picY: 0.5, text: '造物者', startDate: '', endDate: '' },
-    { 編號: '02', picX: 0.5925, picY: 0.521, text: '大地母親', startDate: '', endDate: '' }, // 0.604
-    { 編號: '03', picX: 0.541, picY: 0.585, text: '太陽父親', startDate: '', endDate: '' },
-    { 編號: '04', picX: 0.459, picY: 0.585, text: '月亮祖母', startDate: '', endDate: '' },
-    { 編號: '05', picX: 0.4075, picY: 0.521, text: '海龜家族', startDate: '', endDate: '', 屬性: '土' },
-    { 編號: '06', picX: 0.426, picY: 0.441, text: '青蛙家族', startDate: '', endDate: '', 屬性: '水' },
-    { 編號: '07', picX: 0.5, picY: 0.405, text: '雷鳥家族', startDate: '', endDate: '', 屬性: '火' },
-    { 編號: '08', picX: 0.574, picY: 0.441, text: '蝴蝶家族', startDate: '', endDate: '', 屬性: '風' },
-    { 編號: '09', picX: 0.5, picY: 0.095, text: '北', startDate: '', endDate: '' },
-    { 編號: 10, picX: 0.905, picY: 0.5, text: '東', startDate: '', endDate: '' },
-    { 編號: 11, picX: 0.5, picY: 0.905, text: '南', startDate: '', endDate: '' },
-    { 編號: 12, picX: 0.095, picY: 0.5, text: '西', startDate: '', endDate: '' },
-    { 編號: 13, picX: 0.655, picY: 0.1258, text: '大地復原', startDate: '2023-12-22', endDate: '2024-01-19', 屬性: '土', 家族: '海龜家族', 方位: '北' },
-    { 編號: 14, picX: 0.7867, picY: 0.2136, text: '休眠淨化', startDate: '2024-01-20', endDate: '2024-02-18', 家族: '蝴蝶家族', 方位: '北' },
-    { 編號: 15, picX: 0.875, picY: 0.3447, text: '強風', startDate: '2024-02-19', endDate: '2024-03-20', 屬性: '水', 家族: '青蛙家族', 方位: '北' },
-    { 編號: 16, picX: 0.875, picY: 0.6553, text: '樹萌芽', startDate: '2024-03-21', endDate: '2024-04-19', 屬性: '火', 家族: '雷鳥家族', 方位: '東' },
-    { 編號: 17, picX: 0.7867, picY: 0.7864, text: '蛙回歸', startDate: '2024-04-20', endDate: '2024-05-20', 屬性: '土', 家族: '海龜家族', 方位: '東' },
-    { 編號: 18, picX: 0.655, picY: 0.8742, text: '玉米種植', startDate: '2024-05-21', endDate: '2024-06-20', 屬性: '風', 家族: '蝴蝶家族', 方位: '東' },
-    { 編號: 19, picX: 0.345, picY: 0.8742, text: '烈日', startDate: '2024-06-21', endDate: '2024-07-22', 屬性: '水', 家族: '青蛙家族', 方位: '南' },
-    { 編號: 20, picX: 0.2133, picY: 0.7864, text: '採莓', startDate: '2024-07-23', endDate: '2024-08-22', 家族: '雷鳥家族', 方位: '南' },
-    { 編號: 21, picX: 0.125, picY: 0.6553, text: '收穫', startDate: '2024-08-23', endDate: '2024-09-22', 屬性: '土', 家族: '海龜家族', 方位: '南' },
-    { 編號: 22, picX: 0.125, picY: 0.3447, text: '群鴨飛遷', startDate: '2024-09-23', endDate: '2024-10-23', 屬性: '風', 家族: '蝴蝶家族', 方位: '西' },
-    { 編號: 23, picX: 0.2133, picY: 0.2136, text: '結凍', startDate: '2024-10-24', endDate: '2024-11-21', 屬性: '水', 家族: '青蛙家族', 方位: '西' },
-    { 編號: 24, picX: 0.345, picY: 0.1258, text: '長雪', startDate: '2024-11-22', endDate: '2024-12-21', 屬性: '火', 家族: '雷鳥家族', 方位: '西' },
-    { 編號: 25, picX: 0.5, picY: 0.1725, text: '淨化', startDate: '', endDate: '' },
-    { 編號: 26, picX: 0.5, picY: 0.2495, text: '重建', startDate: '', endDate: '' },
-    { 編號: 27, picX: 0.5, picY: 0.3265, text: '純潔', startDate: '', endDate: '' },
-    { 編號: 28, picX: 0.8275, picY: 0.5, text: '清晰', startDate: '', endDate: '' },
-    { 編號: 29, picX: 0.7505, picY: 0.5, text: '智慧', startDate: '', endDate: '' },
-    { 編號: 30, picX: 0.6735, picY: 0.5, text: '光明', startDate: '', endDate: '' },
-    { 編號: 31, picX: 0.5, picY: 0.8275, text: '成長', startDate: '', endDate: '' },
-    { 編號: 32, picX: 0.5, picY: 0.7505, text: '信任', startDate: '', endDate: '' },
-    { 編號: 33, picX: 0.5, picY: 0.6735, text: '愛', startDate: '', endDate: '' },
-    { 編號: 34, picX: 0.1725, picY: 0.5, text: '體驗', startDate: '', endDate: '' },
-    { 編號: 35, picX: 0.2495, picY: 0.5, text: '內省', startDate: '', endDate: '' },
-    { 編號: 36, picX: 0.3265, picY: 0.5, text: '力量', startDate: '', endDate: '' },
+    { 編號: '02', picX: 0.583, picY: 0.518, text: '大地母親', startDate: '', endDate: '' }, // 0.604
+    { 編號: '03', picX: 0.537, picY: 0.576, text: '太陽父親', startDate: '', endDate: '' },
+    { 編號: '04', picX: 0.463, picY: 0.576, text: '月亮祖母', startDate: '', endDate: '' },
+    { 編號: '05', picX: 0.417, picY: 0.518, text: '海龜家族', startDate: '', endDate: '', 屬性: '土' },
+    { 編號: '06', picX: 0.434, picY: 0.447, text: '青蛙家族', startDate: '', endDate: '', 屬性: '水' },
+    { 編號: '07', picX: 0.5, picY: 0.415, text: '雷鳥家族', startDate: '', endDate: '', 屬性: '火' },
+    { 編號: '08', picX: 0.566, picY: 0.447, text: '蝴蝶家族', startDate: '', endDate: '', 屬性: '風' },
+    { 編號: '09', picX: 0.5, picY: 0.135, text: '北', startDate: '', endDate: '' },
+    { 編號: 10, picX: 0.865, picY: 0.5, text: '東', startDate: '', endDate: '' },
+    { 編號: 11, picX: 0.5, picY: 0.865, text: '南', startDate: '', endDate: '' },
+    { 編號: 12, picX: 0.135, picY: 0.5, text: '西', startDate: '', endDate: '' },
+    { 編號: 13, picX: 0.64, picY: 0.163, text: '大地復原', startDate: '2023-12-22', endDate: '2024-01-19', 屬性: '土', 家族: '海龜家族', 方位: '北' },
+    { 編號: 14, picX: 0.758, picY: 0.242, text: '休眠淨化', startDate: '2024-01-20', endDate: '2024-02-18', 家族: '蝴蝶家族', 方位: '北' },
+    { 編號: 15, picX: 0.837, picY: 0.36, text: '強風', startDate: '2024-02-19', endDate: '2024-03-20', 屬性: '水', 家族: '青蛙家族', 方位: '北' },
+    { 編號: 16, picX: 0.837, picY: 0.64, text: '樹萌芽', startDate: '2024-03-21', endDate: '2024-04-19', 屬性: '火', 家族: '雷鳥家族', 方位: '東' },
+    { 編號: 17, picX: 0.758, picY: 0.758, text: '蛙回歸', startDate: '2024-04-20', endDate: '2024-05-20', 屬性: '土', 家族: '海龜家族', 方位: '東' },
+    { 編號: 18, picX: 0.64, picY: 0.837, text: '玉米種植', startDate: '2024-05-21', endDate: '2024-06-20', 屬性: '風', 家族: '蝴蝶家族', 方位: '東' },
+    { 編號: 19, picX: 0.36, picY: 0.837, text: '烈日', startDate: '2024-06-21', endDate: '2024-07-22', 屬性: '水', 家族: '青蛙家族', 方位: '南' },
+    { 編號: 20, picX: 0.242, picY: 0.758, text: '採莓', startDate: '2024-07-23', endDate: '2024-08-22', 家族: '雷鳥家族', 方位: '南' },
+    { 編號: 21, picX: 0.163, picY: 0.64, text: '收穫', startDate: '2024-08-23', endDate: '2024-09-22', 屬性: '土', 家族: '海龜家族', 方位: '南' },
+    { 編號: 22, picX: 0.163, picY: 0.36, text: '群鴨飛遷', startDate: '2024-09-23', endDate: '2024-10-23', 屬性: '風', 家族: '蝴蝶家族', 方位: '西' },
+    { 編號: 23, picX: 0.242, picY: 0.242, text: '結凍', startDate: '2024-10-24', endDate: '2024-11-21', 屬性: '水', 家族: '青蛙家族', 方位: '西' },
+    { 編號: 24, picX: 0.36, picY: 0.163, text: '長雪', startDate: '2024-11-22', endDate: '2024-12-21', 屬性: '火', 家族: '雷鳥家族', 方位: '西' },
+    { 編號: 25, picX: 0.5, picY: 0.205, text: '淨化', startDate: '', endDate: '' },
+    { 編號: 26, picX: 0.5, picY: 0.274, text: '重建', startDate: '', endDate: '' },
+    { 編號: 27, picX: 0.5, picY: 0.3435, text: '純潔', startDate: '', endDate: '' },
+    { 編號: 28, picX: 0.795, picY: 0.5, text: '清晰', startDate: '', endDate: '' },
+    { 編號: 29, picX: 0.7257, picY: 0.5, text: '智慧', startDate: '', endDate: '' },
+    { 編號: 30, picX: 0.6565, picY: 0.5, text: '光明', startDate: '', endDate: '' },
+    { 編號: 31, picX: 0.5, picY: 0.795, text: '成長', startDate: '', endDate: '' },
+    { 編號: 32, picX: 0.5, picY: 0.7257, text: '信任', startDate: '', endDate: '' },
+    { 編號: 33, picX: 0.5, picY: 0.6565, text: '愛', startDate: '', endDate: '' },
+    { 編號: 34, picX: 0.205, picY: 0.5, text: '體驗', startDate: '', endDate: '' },
+    { 編號: 35, picX: 0.274, picY: 0.5, text: '內省', startDate: '', endDate: '' },
+    { 編號: 36, picX: 0.3435, picY: 0.5, text: '力量', startDate: '', endDate: '' }, // 0.3265
 ];
 var sideSet = [
     { 方位: '北', id: 'north', },
@@ -267,11 +267,11 @@ function draw(data, result) {
     function circleRadiusSet(row) {
         const { 編號 } = row;
         if (編號 === 1) {
-            return Math.round(picSize * 0.045) // 0.055 0.0475
+            return Math.round(picSize * 0.043) // 0.055 0.0475
         } else if (編號 > 8 && 編號 <= 12) {
-            return Math.round(picSize * 0.038)
+            return Math.round(picSize * 0.035)
         } else {
-            return Math.round(picSize * 0.032)
+            return Math.round(picSize * 0.029)
         }
     }
     // 實心圓
@@ -314,18 +314,35 @@ function draw(data, result) {
                 6: { X: sideX + (picSize * -0.1), Y: sideY + (picSize * -0.01) },
                 7: { X: sideX + (picSize * 0.05), Y: sideY + (picSize * -0.027) },
                 8: { X: sideX + (picSize * 0.055), Y: sideY + (picSize * -0.01) },
-                9: { X: sideX + (picSize * 0.055), Y: sideY + (picSize * -0.04) },
-                10: { X: sideX + (picSize * 0.01), Y: sideY + (picSize * 0.041) },
-                11: { X: sideX + (picSize * 0.055), Y: sideY + (picSize * -0.04) },
-                12: { X: sideX + (picSize * -0.06), Y: sideY + (picSize * 0.041) },
+                9: { X: sideX + (picSize * 0.055), Y: sideY + (picSize * -0.02) },
+                10: { X: sideX + (picSize * 0.055), Y: sideY + (picSize * -0.03) },
+                11: { X: sideX + (picSize * -0.105), Y: sideY + (picSize * -0.001) },
+                12: { X: sideX + (picSize * -0.105), Y: sideY + (picSize * -0.001) },
+                右上: { X: sideX + (picSize * 0.05), Y: sideY + (picSize * 0.005) },
+                右下: { X: sideX + (picSize * 0.05), Y: sideY + (picSize * -0.03) },
+                左上: { X: sideX + (picSize * -0.1), Y: sideY + (picSize * 0.005) },
+                左下: { X: sideX + (picSize * -0.1), Y: sideY + (picSize * -0.03) },
                 外: { X: sideX + (picSize * -0.025), Y: sideY + (picSize * 0.035) },
             }
-            if ((編號 >= 13 && 編號 <= 24)) {
-                locationX_set = locationXY['外'].X;
-                locationY_set = locationXY['外'].Y;
-            } else {
+            if ((編號 >= 5 && 編號 <= 12)) {
                 locationX_set = locationXY[編號].X;
                 locationY_set = locationXY[編號].Y;
+            } else 
+            if (編號 >= 13 && 編號 <= 15) {
+                locationX_set = locationXY['右上'].X;
+                locationY_set = locationXY['右上'].Y;
+            } else if (編號 >= 16 && 編號 <= 18) {
+                locationX_set = locationXY['右下'].X;
+                locationY_set = locationXY['右下'].Y;
+            } else if (編號 >= 19 && 編號 <= 21) {
+                locationX_set = locationXY['左下'].X;
+                locationY_set = locationXY['左下'].Y;
+            } else if (編號 >= 22 && 編號 <= 24) {
+                locationX_set = locationXY['左上'].X;
+                locationY_set = locationXY['左上'].Y;
+            } else {
+                locationX_set = locationXY['外'].X;
+                locationY_set = locationXY['外'].Y;
             }
         } else {
             if (type === '守護靈') {
@@ -361,11 +378,15 @@ function draw(data, result) {
                     6: { X: sideX + (picSize * (-0.1 + (-font_move * 2))), Y: sideY + (picSize * (-0.04 + -level)) },
                     7: { X: sideX + (picSize * 0.05), Y: sideY + (picSize * (-0.058 + -level)) },
                     8: { X: sideX + (picSize * 0.055), Y: sideY + (picSize * (-0.041 + -level)) },
-                    9: { X: sideX + (picSize * (0.055)), Y: sideY + (picSize * (-0.008 + level)) },
-                    10: { X: sideX + (picSize * (0.01 + (-font_move * 2))), Y: sideY + (picSize * (0.072 + level)) },
-                    11: { X: sideX + (picSize * (0.055)), Y: sideY + (picSize * (-0.008 + level)) },
-                    12: { X: sideX + (picSize * (-0.06 + font_move)), Y: sideY + (picSize * (0.072 + level)) },
-                    其他: { X: sideX - (picSize * (0.025 + font_move)), Y: sideY + (picSize * (0.066 + level)) },
+                    9: { X: sideX + (picSize * (0.055)), Y: sideY + (picSize * (-0.05 + -level)) },
+                    10: { X: sideX + (picSize * (0.055 + (-font_move * 2))), Y: sideY + (picSize * (0.001 + level)) },
+                    11: { X: sideX + (picSize * (-0.105)), Y: sideY + (picSize * (0.03 + level)) },
+                    12: { X: sideX + (picSize * (-0.105)), Y: sideY + (picSize * (0.03 + level)) },
+                    右上: { X: sideX + (picSize * (0.05 + font_move)), Y: sideY + (picSize * (-0.025 + -level)) },
+                    右下: { X: sideX + (picSize * (0.05 + font_move)), Y: sideY + (picSize * (0.001 + level)) },
+                    左上: { X: sideX + (picSize * (-0.1 + font_move)), Y: sideY + (picSize * (-0.025 + -level)) },
+                    左下: { X: sideX + (picSize * (-0.1 + font_move)), Y: sideY + (picSize * (0.001 + level)) },
+                    下: { X: sideX - (picSize * (0.025 + font_move)), Y: sideY + (picSize * (0.066 + level)) },
                 }
                 // if (編號 === 10) {
                 //     locationX_set = sideX + (picSize * (0.01 + font_move));
@@ -375,11 +396,23 @@ function draw(data, result) {
                 if (編號 >= 2 && 編號 <= 12) {
                     locationX_set = locationXY_get[編號].X;
                     locationY_set = locationXY_get[編號].Y;
+                } else if (編號 >= 13 && 編號 <= 15) {
+                    locationX_set = locationXY_get['右上'].X;
+                    locationY_set = locationXY_get['右上'].Y;
+                } else if (編號 >= 16 && 編號 <= 18) {
+                    locationX_set = locationXY_get['右下'].X;
+                    locationY_set = locationXY_get['右下'].Y;
+                } else if (編號 >= 19 && 編號 <= 21) {
+                    locationX_set = locationXY_get['左下'].X;
+                    locationY_set = locationXY_get['左下'].Y;
+                } else if (編號 >= 22 && 編號 <= 24) {
+                    locationX_set = locationXY_get['左上'].X;
+                    locationY_set = locationXY_get['左上'].Y;
                 } else {
                     // const moveSet_Y = 編號 === 10 || 編號 === 12 ? 0.072 : 0.066;
                     // locationY_set = sideY + (picSize * (0.066 + level));
-                    locationX_set = locationXY_get['其他'].X;
-                    locationY_set = locationXY_get['其他'].Y;
+                    locationX_set = locationXY_get['下'].X;
+                    locationY_set = locationXY_get['下'].Y;
                 }
             }
         }
@@ -405,6 +438,11 @@ function draw(data, result) {
         ctx.arc(locationX, locationY + height, height, Math.PI / 2, -Math.PI / 2);
         // 關閉路徑
         ctx.closePath();
+        // 標籤外框線
+        ctx.strokeStyle = '#fff';
+        ctx.lineWidth = 4;
+        ctx.stroke();
+        ctx.closePath();
         // 填充路徑
         ctx.fillStyle = backgroundColor; // 填充顏色
         ctx.fill(); // 填充內部
@@ -426,11 +464,15 @@ function draw(data, result) {
         // 計算編號位置
         let firstLineY = sideY - fontSize * 0.6;
         // 計算text位置
-        let secondLineY = sideY + fontSize * 0.6;
+        let secondLineY = sideY + fontSize * 0.7;
         if (編號 > 8 && 編號 <= 12) {
             fontSize = Math.floor(picSize * 0.024);
             firstLineY = sideY - fontSize * 0.4;
             secondLineY = sideY + fontSize * 0.8;
+        } else if (編號 === 1) {
+            fontSize = Math.floor(picSize * 0.024);
+            firstLineY = sideY - fontSize * 0.6;
+            secondLineY = sideY + fontSize * 0.6;
         }
         ctx.font = `bold ${fontSize}px Arial`; // 字體大小及類型
         ctx.fillStyle = '#000'; // 文字顏色
@@ -468,7 +510,7 @@ function draw(data, result) {
         const xy = xySet({ picX: picX, picY: picY });
         const radius = circleRadiusSet({ 編號: parseFloat(編號) })
         hollow_circle({ sideX: xy.sideX, sideY: xy.sideY, radius: Math.round(radius) });
-        writeText({ 編號: 編號, sideX: xy.sideX, sideY: xy.sideY, text: text });
+        writeText({ 編號: parseFloat(編號), sideX: xy.sideX, sideY: xy.sideY, text: text });
     }
     // 緩存出現過的實心圓及基礎文字
     let filled_circle_writeText_count = {};
@@ -492,8 +534,8 @@ function draw(data, result) {
             // 如果編號不存在緩存內，則繪製實心圓並將數據加入緩存
             if (!filled_circle_writeText_count[編號]) {
                 filled_circle({ sideX: xy.sideX, sideY: xy.sideY, radius: radius, color: backgroundColor });
-                writeText({ 編號: 編號, sideX: xy.sideX, sideY: xy.sideY, text: text });
-                filled_circle_writeText_count[編號] = 編號;
+                writeText({ 編號: parseFloat(編號), sideX: xy.sideX, sideY: xy.sideY, text: text });
+                filled_circle_writeText_count[編號] = parseFloat(編號);
             }
         }
         let count = -1;
