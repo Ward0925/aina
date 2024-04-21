@@ -81,6 +81,11 @@ function appstar() {// <div class="center" id="myCanvasPie" style="background-im
                             <input autocomplete="off" class="input_text" id="timedates" type="text">
                             <input hidden="" id="selected_date">
                             <select id="chooseColor"></select>
+                            <select id="background_img">
+                                <option value="pic-0">透明</option>
+                                <option value="pic-1">紅花</option>
+                                <option value="pic-2">灰色</option>
+                            </select>
                             <button type="button" class="btn btn-warning px-5 radius-30 pictureDownload">另存圖片</button>
                         </div>
                     </div>
@@ -284,10 +289,10 @@ function myCanvasSet(result) {
         const picSize = divWidth * 2 * devicePixelRatio;
         canvas.width = picSize;
         canvas.height = picSize;
-
+        const background_img = $(`#background_img`).val();
         // 加載背景圖片
         const img = new Image();
-        img.src = 'photo/pic-2.png'; // 更換為你的圖片路徑
+        img.src = `photo/${background_img}.png`; // 更換為你的圖片路徑
         img.onload = function () {
             // 在圖片加載完成後，在 Canvas 上繪製圖片
             ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
