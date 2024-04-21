@@ -208,7 +208,6 @@ function appstar() {// <div class="center" id="myCanvasPie" style="background-im
         a.href = dataURL;
         a.download = 'canvas_image.png';
         a.click();
-
     });
 }
 // 根據日期選擇項目
@@ -243,6 +242,32 @@ function lightcircle(row) {
     }
     return result;
 }
+// function myCanvasSet(result) {
+//     $(`#myCanvas`).remove();
+//     $(`#myCanvasPie`).append(`<canvas id="myCanvas"></canvas>`);
+//     // 初次執行
+//     resizeCanvas();
+//     // 監聽窗口大小變化事件
+//     window.addEventListener('resize', resizeCanvas);
+//     function resizeCanvas() {
+//         const canvas = document.getElementById('myCanvas');
+//         const ctx = canvas.getContext('2d');
+//         const divWidth = document.getElementById('myCanvasPie').offsetWidth;
+//         const devicePixelRatio = window.devicePixelRatio
+//         // 畫布解析度
+//         const picSize = divWidth * 2 * devicePixelRatio;
+//         canvas.width = picSize;
+//         canvas.height = picSize;
+//         const data = { canvas: canvas, ctx: ctx, picSize: picSize, devicePixelRatio: devicePixelRatio };
+//         // 繪製內容
+//         draw(data, result)
+//         // 實際畫布大小
+//         $(`#myCanvas`).css({
+//             width: divWidth,
+//             height: divWidth,
+//         })
+//     }
+// }
 function myCanvasSet(result) {
     $(`#myCanvas`).remove();
     $(`#myCanvasPie`).append(`<canvas id="myCanvas"></canvas>`);
@@ -259,16 +284,27 @@ function myCanvasSet(result) {
         const picSize = divWidth * 2 * devicePixelRatio;
         canvas.width = picSize;
         canvas.height = picSize;
-        const data = { canvas: canvas, ctx: ctx, picSize: picSize, devicePixelRatio: devicePixelRatio };
-        draw(data, result)
-        ctx.scale(picSize, picSize);
-        // 實際畫布大小
-        $(`#myCanvas`).css({
-            width: divWidth,
-            height: divWidth,
-        })
+
+        // 加載背景圖片
+        const img = new Image();
+        img.src = 'photo/pic-1.png'; // 更換為你的圖片路徑
+        img.onload = function () {
+            // 在圖片加載完成後，在 Canvas 上繪製圖片
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+            // 繪製內容
+            const data = { canvas: canvas, ctx: ctx, picSize: picSize, devicePixelRatio: devicePixelRatio };
+            draw(data, result);
+
+            // 實際畫布大小
+            $(`#myCanvas`).css({
+                width: divWidth,
+                height: divWidth,
+            });
+        };
     }
 }
+
 function draw(data, result) {
     const { canvas, ctx, picSize } = data
     // 抗鋸齒效果
@@ -279,8 +315,10 @@ function draw(data, result) {
     ctx.textSmoothingQuality = 'high';
     // 設置像素比例為2，增加清晰度
     ctx.pixelRatio = 10;
+
     // ctx.fillStyle = 'white';
     // ctx.fillRect(0, 0, canvas.width, canvas.height);
+
     // 獲取配色
     const colorChoose = $(`#chooseColor`).val()
     const colorScheme = colorSelect.find(scheme => scheme.配色 === colorChoose);
@@ -511,8 +549,6 @@ function draw(data, result) {
         ctx.textAlign = 'center'; // 文字居中水平對齊
         // 繪製編號
         ctx.fillText(parseFloat(編號), sideX, firstLineY);
-        // 字體樣式
-        ctx.font = `bold ${fontSize}px Arial`; // 字體大小及類型
         // 繪製text
         ctx.fillText(text, sideX, secondLineY);
     }
@@ -573,7 +609,6 @@ function draw(data, result) {
         let count = -1;
         for (let i = 0; i < list.length; i++) {
             const { side, type } = list[i];
-            console.log(side)
             // 如果編號不存在緩存內，則繪製標籤並將數據加入緩存
             if (!title_count[`${編號}${side}`]) {
                 // 繪製標籤
