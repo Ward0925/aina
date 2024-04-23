@@ -96,6 +96,7 @@ function appstar() {// <div class="center" id="myCanvasPie" style="background-im
                             <input hidden="" id="selected_date">
                             <select id="chooseColor"></select>
                             <select id="background_img">
+                                <option value="pic-pic-white">白色</option>
                                 <option value="pic-0">透明</option>
                                 <option value="pic-1">紅花</option>
                                 <option value="pic-2">灰色</option>
