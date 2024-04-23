@@ -358,11 +358,17 @@ function draw(data, result) {
         ctx.fillStyle = colorSet;
         ctx.fill();
         ctx.closePath();
+
+        const colorSetO = 深色;
+        ctx.strokeStyle = colorSetO;
+        ctx.lineWidth = 4;
+        ctx.stroke();
+        ctx.closePath();
     }
     // 空心圓
     function hollow_circle(row) {
         const { sideX, sideY, radius, color } = row;
-        let colorSet = color ? color : '#b9b9b9';
+        let colorSet = color ? color : 深色;
         ctx.beginPath();
         ctx.arc(sideX, sideY, radius, 0, Math.PI * 2);
         ctx.strokeStyle = colorSet;
@@ -374,31 +380,31 @@ function draw(data, result) {
     function drowTitleMark(row) {
         const { 編號, sideX, sideY, side, type, 層級 } = row;
         let backgroundColor = 淺色;
-        let width_set = picSize * 0.05;
-        let height_set = picSize * 0.015;
+        let width_set = 0;
+        let height_set = picSize * 0.012;
         let locationX_set = sideX + (picSize * 0.05);
         let locationY_set = sideY - (picSize * 0.04);
-        let fontSideX_set = picSize * 0.025;
-        let fontSideY_set = picSize * 0.02;
-        let fontSize_set = picSize * 0.016;
+        let fontSideX_set = picSize * 0.02;
+        let fontSideY_set = picSize * 0.017;
+        let fontSize_set = picSize * 0.014;
         let textShow = side;
         if (side_title.includes(side)) {
             backgroundColor = 中色;
             const locationXY = {
-                5: { X: sideX + (picSize * -0.085), Y: sideY + (picSize * 0.046) },
-                6: { X: sideX + (picSize * -0.1), Y: sideY + (picSize * -0.01) },
-                7: { X: sideX + (picSize * 0.05), Y: sideY + (picSize * -0.027) },
-                8: { X: sideX + (picSize * 0.055), Y: sideY + (picSize * -0.01) },
-                9: { X: sideX + (picSize * 0.055), Y: sideY + (picSize * -0.02) },
-                10: { X: sideX + (picSize * 0.055), Y: sideY + (picSize * -0.03) },
-                11: { X: sideX + (picSize * -0.105), Y: sideY + (picSize * -0.001) },
-                12: { X: sideX + (picSize * -0.105), Y: sideY + (picSize * -0.001) },
-                右上: { X: sideX + (picSize * 0.05), Y: sideY + (picSize * 0.005) },
-                右下: { X: sideX + (picSize * 0.05), Y: sideY + (picSize * -0.03) },
-                左上: { X: sideX + (picSize * -0.1), Y: sideY + (picSize * 0.005) },
-                左下: { X: sideX + (picSize * -0.1), Y: sideY + (picSize * -0.03) },
-                外: { X: sideX + (picSize * -0.025), Y: sideY + (picSize * 0.035) },
+                5: { X: sideX + (picSize * -0.075), Y: sideY + (picSize * 0.022) },
+                6: { X: sideX + (picSize * -0.08), Y: sideY + (picSize * -0.03) },
+                7: { X: sideX + (picSize * 0.05), Y: sideY + (picSize * -0.03) },
+                8: { X: sideX + (picSize * 0.05), Y: sideY + (picSize * -0.03) },
+                9: { X: sideX + (picSize * 0.055), Y: sideY + (picSize * -0.03) },
+                10: { X: sideX + (picSize * 0.055), Y: sideY + (picSize * 0.01) },
+                11: { X: sideX + (picSize * -0.1), Y: sideY + (picSize * 0.01) },
+                12: { X: sideX + (picSize * -0.1), Y: sideY + (picSize * -0.03) },
+                右上: { X: sideX + (picSize * 0.05), Y: sideY + (picSize * -0.03) },
+                右下: { X: sideX + (picSize * 0.05), Y: sideY + (picSize * 0.01) },
+                左上: { X: sideX + (picSize * -0.09), Y: sideY + (picSize * -0.03) },
+                左下: { X: sideX + (picSize * -0.09), Y: sideY + (picSize * 0.01) },
             }
+            width_set = picSize * 0.04;
             if ((編號 >= 5 && 編號 <= 12)) {
                 locationX_set = locationXY[編號].X;
                 locationY_set = locationXY[編號].Y;
@@ -415,9 +421,6 @@ function draw(data, result) {
                 } else if (編號 >= 22 && 編號 <= 24) {
                     locationX_set = locationXY['左上'].X;
                     locationY_set = locationXY['左上'].Y;
-                } else {
-                    locationX_set = locationXY['外'].X;
-                    locationY_set = locationXY['外'].Y;
                 }
         } else {
             if (type === '守護靈') {
@@ -429,65 +432,68 @@ function draw(data, result) {
                 const isEnglish = /^[a-zA-Z\s-]+$/.test(animal);
                 textShow = animal ? `${name}｜${animal}` : `${name}`;
                 let font_move = 0;
-                let level = 層級 * 0.031;
+                width_set = picSize * 0.04;
+                let level = 層級 * 0.026;
                 if (isEnglish) {
                     // 輸入內容全英文
                     if (textShow.length > 6) {
-                        width_set = picSize * (0.05 + ((textShow.length - 4) * 0.0085));
-                        font_move = (textShow.length - 4) * 0.00425
+                        width_set = picSize * (0.04 + ((textShow.length - 4) * 0.007));
+                        font_move = (textShow.length - 4) * 0.0035
                     }
                 } else {
                     // 輸入內容不為全英文
                     if (textShow.length > 4) {
-                        width_set = picSize * (0.05 + ((textShow.length - 4) * 0.018));
-                        font_move = ((textShow.length - 4) * 0.009)
+                        width_set = picSize * (0.04 + ((textShow.length - 4) * 0.015));
+                        font_move = ((textShow.length - 4) * 0.0075)
                     }
                 }
-                fontSideX_set = picSize * (0.025 + font_move);
+                fontSideX_set = picSize * (0.02 + font_move);
                 // locationX_set = sideX - (picSize * (0.025 + font_move));
                 const locationXY_get = {
-                    2: { X: sideX + (picSize * 0.035), Y: sideY + (picSize * (0.078 + level)) },
-                    3: { X: sideX + (picSize * 0.01), Y: sideY + (picSize * (0.075 + level)) },
-                    4: { X: sideX + (picSize * (-0.055 + (-font_move * 2))), Y: sideY + (picSize * (0.075 + level)) },
-                    5: { X: sideX + (picSize * (-0.085 + (-font_move * 2))), Y: sideY + (picSize * (0.078 + level)) },
-                    6: { X: sideX + (picSize * (-0.1 + (-font_move * 2))), Y: sideY + (picSize * (-0.04 + -level)) },
-                    7: { X: sideX + (picSize * 0.05), Y: sideY + (picSize * (-0.058 + -level)) },
-                    8: { X: sideX + (picSize * 0.055), Y: sideY + (picSize * (-0.041 + -level)) },
-                    9: { X: sideX + (picSize * (0.055)), Y: sideY + (picSize * (-0.05 + -level)) },
-                    10: { X: sideX + (picSize * (0.055 + (-font_move * 2))), Y: sideY + (picSize * (0.001 + level)) },
-                    11: { X: sideX + (picSize * (-0.105)), Y: sideY + (picSize * (0.03 + level)) },
-                    12: { X: sideX + (picSize * (-0.105)), Y: sideY + (picSize * (0.03 + level)) },
-                    右上: { X: sideX + (picSize * (0.05 + font_move)), Y: sideY + (picSize * (-0.025 + -level)) },
-                    右下: { X: sideX + (picSize * (0.05 + font_move)), Y: sideY + (picSize * (0.001 + level)) },
-                    左上: { X: sideX + (picSize * (-0.1 + font_move)), Y: sideY + (picSize * (-0.025 + -level)) },
-                    左下: { X: sideX + (picSize * (-0.1 + font_move)), Y: sideY + (picSize * (0.001 + level)) },
-                    下: { X: sideX - (picSize * (0.025 + font_move)), Y: sideY + (picSize * (0.066 + level)) },
+                    2: { X: sideX + (picSize * (0.045)), Y: sideY + (picSize * (0.04 + level)) },
+                    3: { X: sideX + (picSize * (0.045)), Y: sideY + (picSize * (0.04 + level)) },
+                    4: { X: sideX + (picSize * (-0.055 + (-font_move * 2))), Y: sideY + (picSize * (0.055 + level)) },
+                    5: { X: sideX + (picSize * (-0.075 + (-font_move * 2))), Y: sideY + (picSize * (0.048 + level)) },
+                    6: { X: sideX + (picSize * (-0.08 + (-font_move * 2))), Y: sideY + (picSize * (-0.056 + -level)) },
+                    7: { X: sideX + (picSize * (0.05)), Y: sideY + (picSize * (-0.056 + -level)) },
+                    8: { X: sideX + (picSize * (0.05)), Y: sideY + (picSize * (-0.056 + -level)) },
+                    9: { X: sideX + (picSize * (0.055)), Y: sideY + (picSize * (-0.056 + -level)) },
+                    10: { X: sideX + (picSize * (0.055 + (-font_move * 2))), Y: sideY + (picSize * (0.036 + level)) },
+                    11: { X: sideX + (picSize * (-0.1 + (-font_move * 2))), Y: sideY + (picSize * (0.036 + level)) },
+                    12: { X: sideX + (picSize * (-0.1)), Y: sideY + (picSize * (-0.056 + -level)) },
+                    30: { X: sideX - (picSize * (-0.03)), Y: sideY + (picSize * (-0.083 + -level)) },
+                    36: { X: sideX - (picSize * (0.06 + (font_move * 2))), Y: sideY + (picSize * (-0.083 + -level)) },
+                    右上: { X: sideX + (picSize * (0.05)), Y: sideY + (picSize * (-0.056 + -level)) },
+                    右下: { X: sideX + (picSize * (0.05)), Y: sideY + (picSize * (0.036 + level)) },
+                    左上: { X: sideX + (picSize * (-0.09 + (-font_move * 2))), Y: sideY + (picSize * (-0.056 + -level)) },
+                    左下: { X: sideX + (picSize * (-0.09 + (-font_move * 2))), Y: sideY + (picSize * (0.036 + level)) },
+                    上: { X: sideX - (picSize * (0.02 + font_move)), Y: sideY + (picSize * (-0.083 + -level)) },
+                    下: { X: sideX - (picSize * (0.02 + font_move)), Y: sideY + (picSize * (0.06 + level)) },
                 }
-                // if (編號 === 10) {
-                //     locationX_set = sideX + (picSize * (0.01 + font_move));
-                // } else if (編號 === 12) {
-                //     locationX_set = sideX + (picSize * (-0.06 + font_move));
-                // }
                 if (編號 >= 2 && 編號 <= 12) {
                     locationX_set = locationXY_get[編號].X;
                     locationY_set = locationXY_get[編號].Y;
-                } else if (編號 >= 13 && 編號 <= 15) {
+                } else if ((編號 >= 13 && 編號 <= 15) || 編號 === 26) {
                     locationX_set = locationXY_get['右上'].X;
                     locationY_set = locationXY_get['右上'].Y;
-                } else if (編號 >= 16 && 編號 <= 18) {
+                } else if ((編號 >= 16 && 編號 <= 18) || 編號 === 31 || 編號 === 33) {
                     locationX_set = locationXY_get['右下'].X;
                     locationY_set = locationXY_get['右下'].Y;
-                } else if (編號 >= 19 && 編號 <= 21) {
+                } else if ((編號 >= 19 && 編號 <= 21) || 編號 === 32) {
                     locationX_set = locationXY_get['左下'].X;
                     locationY_set = locationXY_get['左下'].Y;
-                } else if (編號 >= 22 && 編號 <= 24) {
+                } else if ((編號 >= 22 && 編號 <= 24) || 編號 === 27 || 編號 === 25) {
                     locationX_set = locationXY_get['左上'].X;
                     locationY_set = locationXY_get['左上'].Y;
-                } else {
-                    // const moveSet_Y = 編號 === 10 || 編號 === 12 ? 0.072 : 0.066;
-                    // locationY_set = sideY + (picSize * (0.066 + level));
+                } else if (編號 === 28 || 編號 === 34) {
+                    locationX_set = locationXY_get['上'].X;
+                    locationY_set = locationXY_get['上'].Y;
+                } else if (編號 === 29 || 編號 === 35) {
                     locationX_set = locationXY_get['下'].X;
                     locationY_set = locationXY_get['下'].Y;
+                } else {
+                    locationX_set = locationXY_get[編號].X;
+                    locationY_set = locationXY_get[編號].Y;
                 }
             }
         }
@@ -562,6 +568,7 @@ function draw(data, result) {
     const advance = [];
     const cache = {};
     const uniqueChoose = []; // 獲取有出現的項目
+    let sideAndType = {};
     for (const r of result) {
         const { 編號, picX, picY, side, text, type } = r;
         const key = `${編號}`
@@ -572,8 +579,13 @@ function draw(data, result) {
             uniqueChoose.push(parseFloat(編號));
         }
         const index = advance.indexOf(key);
-        chooseCount[index].次數 += 1;
-        chooseCount[index].list.push({ side: side, type: type });
+        // 守護靈取不重複值
+        if (!sideAndType[`${text}${side}${type}`]) {
+            chooseCount[index].次數 += 1;
+            chooseCount[index].list.push({ side: side, type: type });
+            sideAndType[`${text}${side}${type}`] = `${text}${side}${type}`;
+        }
+
     }
     const unique = title.filter(item => {
         return !uniqueChoose.includes(parseFloat(item.編號));
@@ -582,7 +594,7 @@ function draw(data, result) {
         const { 編號, picX, picY, text, list, 次數 } = r;
         const xy = xySet({ picX: picX, picY: picY });
         const radius = circleRadiusSet({ 編號: parseFloat(編號) })
-        hollow_circle({ sideX: xy.sideX, sideY: xy.sideY, radius: Math.round(radius) });
+        hollow_circle({ sideX: xy.sideX, sideY: xy.sideY, radius: Math.round(radius), color: '#b9b9b9' });
         writeText({ 編號: parseFloat(編號), sideX: xy.sideX, sideY: xy.sideY, text: text });
     }
     // 緩存出現過的實心圓及基礎文字
@@ -594,15 +606,17 @@ function draw(data, result) {
         const xy = xySet({ picX: picX, picY: picY });
         const radius = circleRadiusSet({ 編號: 編號 })
         for (const l of list) {
-            const { side, type } = l;
-            let backgroundColor = 淺色;
-            if (side_title.includes(side)) {
-                backgroundColor = 中色;
-            }
             // 根據出現次出繪製疊加空心圓
             for (let i = 0; i < 次數; i++) {
                 const num = i === 0 ? 1 : (0.13 * i) + 1;
                 hollow_circle({ sideX: xy.sideX, sideY: xy.sideY, radius: Math.round(radius * num), color: 深色 });
+            }
+        }
+        for (const l of list) {
+            const { side, type } = l;
+            let backgroundColor = 淺色;
+            if (side_title.includes(side)) {
+                backgroundColor = 中色;
             }
             // 如果編號不存在緩存內，則繪製實心圓並將數據加入緩存
             if (!filled_circle_writeText_count[編號]) {
