@@ -100,6 +100,7 @@ function appstar() {// <div class="center" id="myCanvasPie" style="background-im
                                 <option value="pic-0">透明</option>
                                 <option value="pic-1">紅花</option>
                                 <option value="pic-2">灰色</option>
+                                <option value="pic-spring">春天</option>
                                 <option value="pic-circle">迴圈</option>
                             </select>
                             <button type="button" class="btn btn-warning px-5 radius-30 pictureDownload">另存圖片</button>
