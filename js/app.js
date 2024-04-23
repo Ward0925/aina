@@ -450,6 +450,9 @@ function draw(data, result) {
                     10: { X: sideX + (picSize * (0.055 + (-font_move * 2))), Y: sideY + (picSize * (0.036 + level)) },
                     11: { X: sideX + (picSize * (-0.1 + (-font_move * 2))), Y: sideY + (picSize * (0.036 + level)) },
                     12: { X: sideX + (picSize * (-0.1)), Y: sideY + (picSize * (-0.056 + -level)) },
+                    25: { X: sideX + (picSize * (-0.09 + (-font_move * 2))), Y: sideY + (picSize * (-0.026 + -level)) },
+                    26: { X: sideX + (picSize * (0.05)), Y: sideY + (picSize * (-0.026 + -level)) },
+                    27: { X: sideX + (picSize * (-0.09 + (-font_move * 2))), Y: sideY + (picSize * (-0.026 + -level)) },
                     30: { X: sideX - (picSize * (-0.03)), Y: sideY + (picSize * (-0.083 + -level)) },
                     31: { X: sideX + (picSize * (0.05)), Y: sideY + (picSize * (0.001 + level)) },
                     32: { X: sideX + (picSize * (-0.09 + (-font_move * 2))), Y: sideY + (picSize * (0.001 + level)) },
@@ -464,7 +467,7 @@ function draw(data, result) {
                 if (編號 >= 2 && 編號 <= 12) {
                     locationX_set = locationXY_get[編號].X;
                     locationY_set = locationXY_get[編號].Y;
-                } else if ((編號 >= 13 && 編號 <= 15) || 編號 === 26) {
+                } else if ((編號 >= 13 && 編號 <= 15)) {
                     locationX_set = locationXY_get['右上'].X;
                     locationY_set = locationXY_get['右上'].Y;
                 } else if ((編號 >= 16 && 編號 <= 18) || 編號 === 33) {
@@ -473,7 +476,7 @@ function draw(data, result) {
                 } else if ((編號 >= 19 && 編號 <= 21)) {
                     locationX_set = locationXY_get['左下'].X;
                     locationY_set = locationXY_get['左下'].Y;
-                } else if ((編號 >= 22 && 編號 <= 24) || 編號 === 27 || 編號 === 25) {
+                } else if ((編號 >= 22 && 編號 <= 24)) {
                     locationX_set = locationXY_get['左上'].X;
                     locationY_set = locationXY_get['左上'].Y;
                 } else if (編號 === 28 || 編號 === 34) {
