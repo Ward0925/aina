@@ -100,6 +100,7 @@ function appstar() {// <div class="center" id="myCanvasPie" style="background-im
                                 <option value="pic-0">透明</option>
                                 <option value="pic-1">紅花</option>
                                 <option value="pic-2">灰色</option>
+                                <option value="pic-circle">迴圈</option>
                             </select>
                             <button type="button" class="btn btn-warning px-5 radius-30 pictureDownload">另存圖片</button>
                         </div>
@@ -625,7 +626,7 @@ function draw(data, result) {
             // 如果編號不存在緩存內，則繪製標籤並將數據加入緩存
             if (!title_count[`${編號}${side}`]) {
                 // 繪製標籤
-                drowTitleMark({ 編號: parseFloat(編號), sideX: xy.sideX, sideY: xy.sideY, side: side, type: type, 層級: count })
+                drowTitleMark({ 編號: parseFloat(編號), sideX: xy.sideX, sideY: xy.sideY, side: side, type: type, 層級: count });
                 title_count[`${編號}${side}`] = `${編號}${side}`;
                 count += 1
             }
