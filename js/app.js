@@ -452,7 +452,7 @@ function draw(data, result) {
                     12: { X: sideX + (picSize * (-0.1)), Y: sideY + (picSize * (-0.056 + -level)) },
                     25: { X: sideX + (picSize * (-0.09 + (-font_move * 2))), Y: sideY + (picSize * (-0.026 + -level)) },
                     26: { X: sideX + (picSize * (0.05)), Y: sideY + (picSize * (-0.026 + -level)) },
-                    27: { X: sideX + (picSize * (-0.09 + (-font_move * 2))), Y: sideY + (picSize * (-0.026 + -level)) },
+                    27: { X: sideX + (picSize * (-0.09 + (-font_move * 2))), Y: sideY + (picSize * (-0.056 + -level)) },
                     30: { X: sideX - (picSize * (-0.03)), Y: sideY + (picSize * (-0.083 + -level)) },
                     31: { X: sideX + (picSize * (0.05)), Y: sideY + (picSize * (0.001 + level)) },
                     32: { X: sideX + (picSize * (-0.09 + (-font_move * 2))), Y: sideY + (picSize * (0.001 + level)) },
