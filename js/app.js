@@ -451,6 +451,8 @@ function draw(data, result) {
                     11: { X: sideX + (picSize * (-0.1 + (-font_move * 2))), Y: sideY + (picSize * (0.036 + level)) },
                     12: { X: sideX + (picSize * (-0.1)), Y: sideY + (picSize * (-0.056 + -level)) },
                     30: { X: sideX - (picSize * (-0.03)), Y: sideY + (picSize * (-0.083 + -level)) },
+                    31: { X: sideX + (picSize * (0.05)), Y: sideY + (picSize * (0.001 + level)) },
+                    32: { X: sideX + (picSize * (-0.09 + (-font_move * 2))), Y: sideY + (picSize * (0.001 + level)) },
                     36: { X: sideX - (picSize * (0.06 + (font_move * 2))), Y: sideY + (picSize * (-0.083 + -level)) },
                     右上: { X: sideX + (picSize * (0.05)), Y: sideY + (picSize * (-0.056 + -level)) },
                     右下: { X: sideX + (picSize * (0.05)), Y: sideY + (picSize * (0.036 + level)) },
@@ -465,10 +467,10 @@ function draw(data, result) {
                 } else if ((編號 >= 13 && 編號 <= 15) || 編號 === 26) {
                     locationX_set = locationXY_get['右上'].X;
                     locationY_set = locationXY_get['右上'].Y;
-                } else if ((編號 >= 16 && 編號 <= 18) || 編號 === 31 || 編號 === 33) {
+                } else if ((編號 >= 16 && 編號 <= 18) || 編號 === 33) {
                     locationX_set = locationXY_get['右下'].X;
                     locationY_set = locationXY_get['右下'].Y;
-                } else if ((編號 >= 19 && 編號 <= 21) || 編號 === 32) {
+                } else if ((編號 >= 19 && 編號 <= 21)) {
                     locationX_set = locationXY_get['左下'].X;
                     locationY_set = locationXY_get['左下'].Y;
                 } else if ((編號 >= 22 && 編號 <= 24) || 編號 === 27 || 編號 === 25) {
