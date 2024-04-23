@@ -381,7 +381,7 @@ function draw(data, result) {
             backgroundColor = 中色;
             const locationXY = {
                 5: { X: sideX + (picSize * -0.075), Y: sideY + (picSize * 0.022) },
-                6: { X: sideX + (picSize * -0.08), Y: sideY + (picSize * -0.03) },
+                6: { X: sideX + (picSize * -0.07), Y: sideY + (picSize * -0.05) },
                 7: { X: sideX + (picSize * 0.05), Y: sideY + (picSize * -0.03) },
                 8: { X: sideX + (picSize * 0.05), Y: sideY + (picSize * -0.03) },
                 9: { X: sideX + (picSize * 0.055), Y: sideY + (picSize * -0.03) },
@@ -443,7 +443,7 @@ function draw(data, result) {
                     3: { X: sideX + (picSize * (0.045)), Y: sideY + (picSize * (0.04 + level)) },
                     4: { X: sideX + (picSize * (-0.055 + (-font_move * 2))), Y: sideY + (picSize * (0.055 + level)) },
                     5: { X: sideX + (picSize * (-0.075 + (-font_move * 2))), Y: sideY + (picSize * (0.048 + level)) },
-                    6: { X: sideX + (picSize * (-0.08 + (-font_move * 2))), Y: sideY + (picSize * (-0.056 + -level)) },
+                    6: { X: sideX + (picSize * (-0.07 + (-font_move * 2))), Y: sideY + (picSize * (-0.076 + -level)) },
                     7: { X: sideX + (picSize * (0.05)), Y: sideY + (picSize * (-0.056 + -level)) },
                     8: { X: sideX + (picSize * (0.05)), Y: sideY + (picSize * (-0.056 + -level)) },
                     9: { X: sideX + (picSize * (0.055)), Y: sideY + (picSize * (-0.056 + -level)) },
@@ -456,7 +456,7 @@ function draw(data, result) {
                     30: { X: sideX - (picSize * (-0.03)), Y: sideY + (picSize * (-0.083 + -level)) },
                     31: { X: sideX + (picSize * (0.05)), Y: sideY + (picSize * (0.001 + level)) },
                     32: { X: sideX + (picSize * (-0.09 + (-font_move * 2))), Y: sideY + (picSize * (0.001 + level)) },
-                    36: { X: sideX - (picSize * (0.06 + (font_move * 2))), Y: sideY + (picSize * (-0.083 + -level)) },
+                    36: { X: sideX - (picSize * (0.03 + (font_move * 2))), Y: sideY + (picSize * (-0.083 + -level)) },
                     右上: { X: sideX + (picSize * (0.05)), Y: sideY + (picSize * (-0.056 + -level)) },
                     右下: { X: sideX + (picSize * (0.05)), Y: sideY + (picSize * (0.036 + level)) },
                     左上: { X: sideX + (picSize * (-0.09 + (-font_move * 2))), Y: sideY + (picSize * (-0.056 + -level)) },
@@ -630,8 +630,6 @@ function draw(data, result) {
                 count += 1
             }
         }
-
-
     }
     // /* 測試使用 */
     // for (const r of title) {
