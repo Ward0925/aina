@@ -63,8 +63,22 @@ var colorSelect = [
 var side_title = ['本命方位', '本命家族', '本命月份'];
 var allcircle = [];
 function appstar() {// <div class="center" id="myCanvasPie" style="background-image: url('photo/pic.png'); background-size: cover; background-position: center;">
+    const illustrate = `
+        <span style="white-space: pre-line;">想說的話寫在這裡
+        嘿唷嘿唷拔蘿蔔
+        </span>
+    `;
     const html = `
-        <div class="row row-cols-xl-2 ">
+        <div class="row">
+            <div class="col-12 col-xl-12">
+                <div class="card radius-10">
+                    <div class="card-body">
+                    ${illustrate}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row row-cols-xl-2">
             <div class="col-12 col-xl-6">
                 <div class="card radius-10">
                     <div class="card-body">
@@ -247,32 +261,6 @@ function lightcircle(row) {
     }
     return result;
 }
-// function myCanvasSet(result) {
-//     $(`#myCanvas`).remove();
-//     $(`#myCanvasPie`).append(`<canvas id="myCanvas"></canvas>`);
-//     // 初次執行
-//     resizeCanvas();
-//     // 監聽窗口大小變化事件
-//     window.addEventListener('resize', resizeCanvas);
-//     function resizeCanvas() {
-//         const canvas = document.getElementById('myCanvas');
-//         const ctx = canvas.getContext('2d');
-//         const divWidth = document.getElementById('myCanvasPie').offsetWidth;
-//         const devicePixelRatio = window.devicePixelRatio
-//         // 畫布解析度
-//         const picSize = divWidth * 2 * devicePixelRatio;
-//         canvas.width = picSize;
-//         canvas.height = picSize;
-//         const data = { canvas: canvas, ctx: ctx, picSize: picSize, devicePixelRatio: devicePixelRatio };
-//         // 繪製內容
-//         draw(data, result)
-//         // 實際畫布大小
-//         $(`#myCanvas`).css({
-//             width: divWidth,
-//             height: divWidth,
-//         })
-//     }
-// }
 function myCanvasSet(result) {
     $(`#myCanvas`).remove();
     $(`#myCanvasPie`).append(`<canvas id="myCanvas"></canvas>`);
