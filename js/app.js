@@ -134,7 +134,7 @@ function appstar() {// <div class="center" id="myCanvasPie" style="background-im
             ${countSelect === 0 ? '' : '<hr>'}
             <div style="display: flex; align-items: center; flex-wrap: wrap;">
                 <span style="text-align: right; margin-right: 10px;">${方位}</span>
-                <input required="" class="input_text input_text_${id}" type="text" style="width: 190px;">
+                <input required="" class="input_text" id="input_text_${id}" type="text" style="width: 190px;">
                 ${num}
                 <div id="select-${id}"></div>
             </div>
@@ -427,7 +427,7 @@ function draw(data, result) {
                 const nameGet = sideSet.find(scheme => scheme.id === side);
                 const name = nameGet.方位;
                 // 獲取輸入框資料
-                const animal = $(`.input_text_${side}`).val();
+                const animal = $(`#input_text_${side}`).val();
                 // 判斷輸入內容是否全英文
                 const isEnglish = /^[a-zA-Z\s-]+$/.test(animal);
                 textShow = animal ? `${name}｜${animal}` : `${name}`;
