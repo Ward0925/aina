@@ -2651,7 +2651,7 @@ input.search-control-2::placeholder {
 
 .input_text[type="text"] {
 	box-sizing: border-box;
-	width: 8vw;
+	width: 7vw;
 	height: calc(2em + 2px);
 	margin: 1em 0 1em;
 	padding: 1em;
