@@ -2651,8 +2651,8 @@ input.search-control-2::placeholder {
 
 .input_text[type="text"] {
 	box-sizing: border-box;
-	width: -webkit-fill-available;
-	height: calc(3em + 2px);
+	width: 8vw;
+	height: calc(2em + 2px);
 	margin: 1em 0 1em;
 	padding: 1em;
 	border: 1px solid #ccc;
@@ -2828,9 +2828,8 @@ select {
 	text-align: center !important;
 	color: white;
 	background-color: #4c9aac;
-	padding: 10px !important;
 	border-radius: 40px !important;
-	height: 42px !important;
+	height: calc(2em + 2px);
 	margin: 5px 5px 5px 5px !important;
 	border: none !important;
 }
