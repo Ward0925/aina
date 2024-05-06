@@ -152,8 +152,10 @@ function appstar() {// <div class="center" id="myCanvasPie" style="background-im
         chooseHTML += `
             ${countSelect === 0 ? '' : '<hr>'}
             <div style="display: flex; align-items: center; flex-wrap: wrap;">
-                <span style="text-align: right; margin-right: 10px;">${方位}</span>
-                <input required="" class="input_text" id="input_text_${id}" type="text">
+                <div style="display: flex; justify-content: center; align-items: center;">
+                    <span style="text-align: right; margin-right: 10px;">${方位}</span>
+                    <input required="" class="input_text" id="input_text_${id}" type="text">
+                </div>
                 ${num}
                 <div id="select-${id}"></div>
             </div>
